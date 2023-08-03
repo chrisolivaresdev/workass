@@ -14,13 +14,10 @@ function createWindow() {
   });
 
   // Carga la aplicación Angular
-  win.loadURL(
-    url.format({
-      pathname: path.join(__dirname, '../dist/workass/index.html'),
-      protocol: 'file:',
-      slashes: true,
-    })
-  );
+  const filePath = path.join(__dirname, '../src/index.html');
+
+  // Carga la aplicación Angular
+  win.loadFile(filePath);
 
   win.on('closed', () => {
     win = null;
