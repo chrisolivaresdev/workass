@@ -1,0 +1,39 @@
+
+<!--
+  mostrar condicionalmente cuando carguen los datos
+  <app-spinner >
+</app-spinner> -->
+
+<div class="container p-3 d-flex justify-content-between animate__animated animate__fadeInLeft" >
+  <button (click)="createEmployee()">
+    Crear empleado
+  </button>
+  <form class="d-flex justify-content-center align-items-center">
+    <input type="text" class="form-control" placeholder="Buscar"/>
+  </form>
+  <button (click)="createUser()">
+    Crear usuario
+  </button>
+</div>
+
+<div class="container p-3 d-flex justify-content-center gap-3 flex-wrap animate__animated animate__fadeInLeft">
+  <ng-container *ngFor="let user of users">
+    <app-card [user]="user" (DeleteUserById)="DeleteUserById($event)"></app-card>
+  </ng-container>
+
+</div>
+
+
+<div class="container p-3 d-flex justify-content-center gap-3 animate__animated animate__fadeInLeft" >
+  <button (click)="lastPage()">
+    Pagina anterior
+  </button>
+
+  <button (click)="nextPage()">
+    Pagina siguiente
+  </button>
+</div>
+
+
+
+

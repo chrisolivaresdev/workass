@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="form-body">
+    <img src="./assets/img/219983.png" alt="usuario">
+    <p class="text"> Bienvenido a Worcass</p>
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
+      <input type="email" placeholder="Email" formControlName="email">
+      <input type="password" placeholder="Contraseña" formControlName="password">
+      <button type="submit">Iniciar Sesion</button>
+    </form>
+  </div>
+</div>

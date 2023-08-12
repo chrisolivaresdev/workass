@@ -14,7 +14,7 @@ function createWindow() {
   });
 
   // Carga la aplicación Angular
-  const filePath = path.join(__dirname, '../src/index.html');
+  const filePath = path.join(__dirname, '../dist/workass/index.html');
 
   // Carga la aplicación Angular
   win.loadFile(filePath);

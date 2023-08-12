@@ -1,0 +1,30 @@
+
+<!--
+  mostrar condicionalmente cuando carguen los datos
+  <app-spinner >
+</app-spinner> -->
+
+<div class="container p-3 d-flex justify-content-center animate__animated animate__fadeInLeft" >
+  <button (click)="createCar()">
+    Crear
+  </button>
+</div>
+
+<div class="container p-3 d-flex justify-content-center gap-3 flex-wrap animate__animated animate__fadeInLeft">
+      <app-card-cars (DeletecarById)="DeleteCarById($event)"></app-card-cars>
+</div>
+
+
+<div class="container p-3 d-flex justify-content-between animate__animated animate__fadeInLeft" >
+  <button (click)="lastPage()">
+    Pagina anterior
+  </button>
+
+  <button (click)="nextPage()">
+    Pagina siguiente
+  </button>
+</div>
+
+
+
+

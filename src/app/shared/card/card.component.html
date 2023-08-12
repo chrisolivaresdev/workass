@@ -1,0 +1,20 @@
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{user.nombre_contratante}}</h5>
+      <p class="card-text">{{user.numero_control}}</p>
+      <p class="card-text">{{user.fecha_ingreso}}</p>
+      <p class="card-text">{{user.cedula_contratante}}</p>
+      <p class="card-text">{{user.telefono_contratante}}</p>
+      <p class="card-text">{{user.direccion_contratante}}</p>
+      <p class="card-text">{{user.nombre_beneficiario}}</p>
+      <p class="card-text">{{user.cedula_beneficiario}}</p>
+      <p class="card-text">{{user.promotor}}</p>
+      <p class="card-text">{{user.numero_factura}}</p>
+      <p class="card-text">{{user.fecha_vencimiento}}</p>
+    </div>
+      <div class="card-icons">
+        <span class="car-icon:hover"><i class="fas fa-car" ></i></span>
+        <span class="edit-icon"><i class="fas fa-pencil-alt" (click)="editUser(user.id)"></i></span>
+        <span class="delete-icon"><i class="fas fa-trash-alt" (click)="deleteUser(user.id)"></i></span>
+      </div>
+  </div>

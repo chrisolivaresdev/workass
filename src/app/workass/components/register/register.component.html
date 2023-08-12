@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="form-body">
+    <img src="./assets/img/219983.png" alt="usuario">
+    <p class="text"> Crea un nuevo empleado</p>
+    <form class="login-form" [formGroup]="registerForm" (ngSubmit)="createEmployee()">
+      <input type="text" placeholder="Nombre" formControlName="nombre">
+      <input type="text" placeholder="Apellido" formControlName="apellido">
+      <input type="text" placeholder="Email" formControlName="email">
+      <input type="password" placeholder="Contraseña" formControlName="password">
+      <input type="text" placeholder="Rol" formControlName="rol" [readonly]="true">
+      <button type="submit">Crear</button>
+      <button (click)="lastPage()">Volver</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="container d-flex flex-column justify-content-center align-items-center gap-2 animate__animated animate__fadeInLeft" style="height: 90vh;">
+  <h1 class="title"> {{(isEdit ? 'Editar'  : 'Crear')}} usuario </h1>
+
+  <form class="col-4 d-flex flex-column gap-2" [formGroup]="CarForm" (ngSubmit)="save()">
+    <input type="text" class="form-control" placeholder="Numero de control" formControlName="numero_control" [ngClass]="{ 'invalid':
+    CarForm.controls['numero_control'].invalid &&
+    CarForm.controls['numero_control'].touched &&
+    CarForm.controls['numero_control'].errors}">
+
+
+    <div class="d-flex justify-content-center gap-1">
+      <button  type="button" class="btn btn-danger" (click)="back()"> Volver </button>
+      <button  type="submit" class="btn btn-success" [disabled]="CarForm.invalid" >Guardar</button>
+    </div>
+
+  </form>
+
+</div>
