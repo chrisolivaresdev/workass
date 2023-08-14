@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
-import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-card',
@@ -13,16 +12,20 @@ export class CardComponent implements OnInit {
   @Output() DeleteUserById =  new EventEmitter<number>()
 
 
-  constructor(private router:Router, private UserService:UserService) { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
 
-  editUser(id:number) {
-  this.router.navigateByUrl(`editUser/${id}`)
+  viewCars(id:any){
+    this.router.navigateByUrl(`${id}/carList`)
   }
 
-  deleteUser(id:number){
+  EditarUsuario(id:any) {
+  this.router.navigateByUrl(`EditarUsuario/${id}`)
+  }
+
+  deleteUser(id:any){
     Swal.fire({
       title: "Estas seguro",
       text: "Quieres eliminar el usuario",

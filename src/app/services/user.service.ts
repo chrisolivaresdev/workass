@@ -17,7 +17,7 @@ export class UserService {
   }
 
   getId(id:any){
-    return this.http.get(`${this.baseUrl}/${id}`)
+    return this.http.get<User>(`${this.baseUrl}/${id}`)
   }
 
   putUsers(id:any, body:any){

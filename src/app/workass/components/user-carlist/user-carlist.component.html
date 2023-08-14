@@ -1,21 +1,23 @@
+<span class="back-icon"><i class="fas fa-arrow-left" (click)="backPage()"></i></span>
 
-<!--
-  mostrar condicionalmente cuando carguen los datos
-  <app-spinner >
-</app-spinner> -->
+<app-spinner *ngIf="!vehicles">
+</app-spinner>
 
-<div class="container p-3 d-flex justify-content-center animate__animated animate__fadeInLeft" >
-  <button (click)="createCar()">
+<div class="container p-3 d-flex justify-content-center animate__animated animate__fadeInLeft" *ngIf="vehicles">
+  <button (click)="CrearVehicle()">
     Crear
   </button>
 </div>
 
-<div class="container p-3 d-flex justify-content-center gap-3 flex-wrap animate__animated animate__fadeInLeft">
-      <app-card-cars (DeletecarById)="DeleteCarById($event)"></app-card-cars>
+<div class="container p-3 d-flex justify-content-center gap-3 flex-wrap animate__animated animate__fadeInLeft" *ngIf="vehicles">
+  <ng-container *ngFor="let vehicle of vehicles">
+    <app-card-cars [vehicle]="vehicle" (editVehicleById)="editVehicleById($event)" (DeletecarById)="DeleteCarById($event)"></app-card-cars>
+  </ng-container>
+
 </div>
 
 
-<div class="container p-3 d-flex justify-content-between animate__animated animate__fadeInLeft" >
+<div class="container p-3 d-flex justify-content-between animate__animated animate__fadeInLeft" *ngIf="vehicles">
   <button (click)="lastPage()">
     Pagina anterior
   </button>

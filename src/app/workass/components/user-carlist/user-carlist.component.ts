@@ -1,39 +1,70 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/interface/user.interface';
+import { VehiclesService } from 'src/app/services/vehicles.service';
+import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-user-carlist',
-  templateUrl: './user-carlist.component.html',
-  styleUrls: ['./user-carlist.component.css']
+  selector: 'app-user-carList',
+  templateUrl: './user-carList.component.html',
+  styleUrls: ['./user-carList.component.css']
 })
-export class UserCarlistComponent implements OnInit {
+export class UsercarListComponent implements OnInit {
 
-  users!:User[]
+  vehicles!:[]
   id:any
 
-  constructor( private router:Router, private activateRoute:ActivatedRoute) { }
+  constructor( private router:Router, private activateRoute:ActivatedRoute, private VehicleService:VehiclesService) { }
 
   ngOnInit(): void {
 
     if(this.router.url.includes('carList')){
       this.activateRoute.params.subscribe({
         next: ({ id }) => {
-          console.log(id)
           this.id = id
+          this.getCars(this.id)
           },
       });
     }
 
   }
 
-  DeleteCarById(id:any){
-   localStorage.setItem('user', JSON.stringify(this.users))
+
+  getCars(id:any){
+    this.VehicleService.getVehicles(id).subscribe( resp => {
+      this.vehicles = resp.data
+    })
   }
 
-  createCar(){
-    this.router.navigate([`${this.id}/createCar`])
+  DeleteCarById(id:any){
+    this.VehicleService.deleteVehicles(id).subscribe( resp => {
+      Swal.fire({
+        icon: 'success',
+        title: "Bien!!",
+        text: "Vehiculo eliminado correctamente"
+      })
+      this.ngOnInit()
+    }, (err) => {
+      Swal.fire({
+        icon: 'warning',
+        title: "Upps!!",
+        text: err
+      })
+    })
   }
+
+  editVehicleById(id:any){
+    this.router.navigate([`${this.id}/editarVehicle/${id}`])
+  }
+
+  CrearVehicle(){
+    this.router.navigate([`${this.id}/CrearVehicle`])
+  }
+
+  backPage(){
+    this.router.navigate(['/Usuarios'])
+  }
+
 
   nextPage(){
 

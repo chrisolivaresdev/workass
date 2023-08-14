@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  createEmployee() {
+  CrearEmpleado() {
     this.AuthService.register(this.registerForm.value).subscribe( resp => {
       Swal.fire(
         'Felicidades!',
@@ -47,6 +47,10 @@ export class RegisterComponent implements OnInit {
   }
 
   lastPage(){
-    this.router.navigate(['/home'])
+    this.router.navigate(['/Usuarios'])
+  }
+
+  viewEmployees(){
+    this.router.navigate(['/ListaEmpleados'])
   }
 }

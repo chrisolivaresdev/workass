@@ -2,7 +2,7 @@
   <h1 class="title"> {{(isEdit ? 'Editar'  : 'Crear')}} usuario </h1>
 
   <form class="col-4 d-flex flex-column gap-2" [formGroup]="userForm" (ngSubmit)="save()">
-    <input type="text" class="form-control" placeholder="Numero de control" formControlName="numero_control" [ngClass]="{ 'invalid':
+    <input type="number" class="form-control" placeholder="Numero de control" formControlName="numero_control" [ngClass]="{ 'invalid':
     userForm.controls['numero_control'].invalid &&
     userForm.controls['numero_control'].touched &&
     userForm.controls['numero_control'].errors}">

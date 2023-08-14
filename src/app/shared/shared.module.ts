@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { CardComponent } from './card/card.component';
 import { CardCarsComponent } from './card-cars/card-cars.component';
+import { CardEmployeesComponent } from './card-employees/card-employees.component';
 
 
 
@@ -11,7 +12,8 @@ import { CardCarsComponent } from './card-cars/card-cars.component';
   declarations: [
     SpinnerComponent,
     CardComponent,
-    CardCarsComponent
+    CardCarsComponent,
+    CardEmployeesComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { CardCarsComponent } from './card-cars/card-cars.component';
   exports:[
     SpinnerComponent,
     CardComponent,
-    CardCarsComponent
+    CardCarsComponent,
+    CardEmployeesComponent
   ]
 })
 export class SharedModule { }

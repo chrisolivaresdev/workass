@@ -25,8 +25,8 @@ export class UserListComponent implements OnInit {
     })
   }
 
-  createEmployee(){
-    this.router.navigate(['/createEmployee'])
+  CrearEmpleado(){
+    this.router.navigate(['/CrearEmpleado'])
   }
 
   DeleteUserById(id:any){
@@ -46,8 +46,8 @@ export class UserListComponent implements OnInit {
     })
   }
 
-  createUser(){
-    this.router.navigate(['/createUser'])
+  CrearUsuario(){
+    this.router.navigate(['/CrearUsuario'])
   }
 
   nextPage(){

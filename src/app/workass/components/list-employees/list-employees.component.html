@@ -1,0 +1,30 @@
+<span class="back-icon"><i class="fas fa-arrow-left" (click)="backPage()"></i></span>
+
+  <app-spinner *ngIf="!employees">
+</app-spinner>
+
+<div class="container p-3 d-flex justify-content-end animate__animated animate__fadeInLeft" *ngIf="employees">
+  <button (click)="CrearEmpleado()">
+    Crear empleado
+  </button>
+</div>
+
+<div class="container p-3 d-flex justify-content-center gap-3 flex-wrap animate__animated animate__fadeInLeft" *ngIf="employees">
+  <ng-container *ngFor="let employee of employees">
+    <app-card-employees [employee]="employee" (deleteEmployee)="deleteEmployee($event)"></app-card-employees>
+  </ng-container>
+</div>
+
+<div class="container p-3 d-flex justify-content-center gap-3 animate__animated animate__fadeInLeft" *ngIf="employees">
+  <button (click)="lastPage()">
+    Pagina anterior
+  </button>
+
+  <button (click)="nextPage()" *ngIf="employees">
+    Pagina siguiente
+  </button>
+</div>
+
+
+
+

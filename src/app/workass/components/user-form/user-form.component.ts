@@ -13,39 +13,64 @@ import { UserService } from '../../../services/user.service';
 })
 export class UserFormComponent implements OnInit {
 
-  @Output() CreateUser =  new EventEmitter<number>()
+  @Output() CrearUsuario =  new EventEmitter<number>()
 
   isEdit:boolean = false
   user!:User
   id:any
 
-  userForm:FormGroup = this.fb.group({
-    numero_control: ['', [Validators.required,]],
-    fecha_ingreso: ['', [Validators.required]],
-    nombre_contratante: ['', [Validators.required]],
-    cedula_contratante:['', [Validators.required]],
-    telefono_contratante:['', [Validators.required]],
-    direccion_contratante:['', [Validators.required]],
-    nombre_beneficiario:['', [Validators.required]],
-    cedula_beneficiario:['', [Validators.required]],
-    promotor:['', [Validators.required]],
-    numero_factura:['', [Validators.required]],
-    fecha_vencimiento:['', [Validators.required]],
-  })
+  userForm:FormGroup
+
 
   constructor(private fb:FormBuilder, private router:Router, private activateRoute:ActivatedRoute, private UserService:UserService) {
+    this.userForm = this.fb.group({
+      numero_control: ['', [Validators.required,]],
+      fecha_ingreso: ['', [Validators.required]],
+      nombre_contratante: ['', [Validators.required]],
+      cedula_contratante:['', [Validators.required]],
+      telefono_contratante:['', [Validators.required]],
+      direccion_contratante:['', [Validators.required]],
+      nombre_beneficiario:['', [Validators.required]],
+      cedula_beneficiario:['', [Validators.required]],
+      promotor:['', [Validators.required]],
+      numero_factura:['', [Validators.required]],
+      fecha_vencimiento:['', [Validators.required]],
+    })
+
   }
 
   ngOnInit(): void {
 
-    if(this.router.url.includes('editUser')){
+    if(this.router.url.includes('EditarUsuario')){
       this.activateRoute.params.subscribe({
         next: ({ id }) => {
           this.isEdit = true
           this.id = id
+          this.getUserById(this.id)
         },
       });
     }
+
+
+  }
+
+  getUserById(id:any){
+    this.UserService.getId(id).subscribe( resp => {
+      const user = resp
+      if(user){
+        this.userForm.controls['numero_control'].setValue(user.numero_control);
+        this.userForm.controls['fecha_ingreso'].setValue(user.fecha_ingreso);
+        this.userForm.controls['nombre_contratante'].setValue(user.nombre_contratante);
+        this.userForm.controls['cedula_contratante'].setValue(user.cedula_contratante);
+        this.userForm.controls['telefono_contratante'].setValue(user.telefono_contratante);
+        this.userForm.controls['direccion_contratante'].setValue(user.direccion_contratante);
+        this.userForm.controls['nombre_beneficiario'].setValue(user.nombre_beneficiario);
+        this.userForm.controls['cedula_beneficiario'].setValue(user.cedula_beneficiario);
+        this.userForm.controls['promotor'].setValue(user.promotor);
+        this.userForm.controls['numero_factura'].setValue(user.numero_factura);
+        this.userForm.controls['fecha_vencimiento'].setValue(user.fecha_vencimiento);
+      }
+    })
   }
 
   back(){
@@ -61,7 +86,7 @@ export class UserFormComponent implements OnInit {
           title: "Bien!!",
           text: "Usuario editado correctamente"
         })
-        this.router.navigate(['/home'])
+        this.router.navigate(['/Usuarios'])
       }, (err) => {
         Swal.fire({
           icon: 'warning',
@@ -69,7 +94,7 @@ export class UserFormComponent implements OnInit {
           text: err
         })
       })
-      this.router.navigate(['/home'])
+      this.router.navigate(['/Usuarios'])
 
     } else {
 
@@ -80,7 +105,7 @@ export class UserFormComponent implements OnInit {
           text: "Usuario creado correctamente"
         })
         this.userForm.reset()
-        this.router.navigate(['/home'])
+        this.router.navigate(['/Usuarios'])
       }, (err) => {
         Swal.fire({
           icon: 'warning',

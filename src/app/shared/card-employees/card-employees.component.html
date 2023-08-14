@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Nombre:{{employee.nombre}}</h5>
+    <p class="card-text"><strong> Apellido:</strong> {{employee.apellido}}</p>
+    <p class="card-text"><strong> Email:</strong> {{employee.email}}</p>
+    <p class="card-text"><strong> Rol:</strong> {{employee.rol}}</p>
+
+  </div>
+    <div class="card-icons">
+      <span class="delete-icon"><i class="fas fa-trash-alt" (click)="deleteEmployes(employee._id)"></i></span>
+    </div>
+</div>

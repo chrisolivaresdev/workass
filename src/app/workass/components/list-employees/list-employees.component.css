@@ -21,6 +21,12 @@ button:active {
   box-shadow: 0 0 0 0 #3bd5f8;
 }
 
+.inputSearch{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .back-icon{
   font-size:30px;
   margin-top:20px;

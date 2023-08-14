@@ -1,11 +1,51 @@
 <div class="container d-flex flex-column justify-content-center align-items-center gap-2 animate__animated animate__fadeInLeft" style="height: 90vh;">
-  <h1 class="title"> {{(isEdit ? 'Editar'  : 'Crear')}} usuario </h1>
+  <h1 class="title"> {{(isEdit ? 'Editar'  : 'Crear')}} vehiculos </h1>
 
   <form class="col-4 d-flex flex-column gap-2" [formGroup]="CarForm" (ngSubmit)="save()">
-    <input type="text" class="form-control" placeholder="Numero de control" formControlName="numero_control" [ngClass]="{ 'invalid':
-    CarForm.controls['numero_control'].invalid &&
-    CarForm.controls['numero_control'].touched &&
-    CarForm.controls['numero_control'].errors}">
+    <input type="text" class="form-control" placeholder="Clase" formControlName="clase" [ngClass]="{ 'invalid':
+    CarForm.controls['clase'].invalid &&
+    CarForm.controls['clase'].touched &&
+    CarForm.controls['clase'].errors}">
+    <input type="text" class="form-control" placeholder="Marca" formControlName="marca" [ngClass]="{ 'invalid':
+    CarForm.controls['marca'].invalid &&
+    CarForm.controls['marca'].touched &&
+    CarForm.controls['marca'].errors}">
+    <input type="text" class="form-control" placeholder="Modelo" formControlName="modelo" [ngClass]="{ 'invalid':
+    CarForm.controls['modelo'].invalid &&
+    CarForm.controls['modelo'].touched &&
+    CarForm.controls['modelo'].errors}">
+    <input type="text" class="form-control" placeholder="Placa" formControlName="placa" [ngClass]="{ 'invalid':
+    CarForm.controls['placa'].invalid &&
+    CarForm.controls['placa'].touched &&
+    CarForm.controls['placa'].errors}">
+    <input type="text" class="form-control" placeholder="Serial Carroceria" formControlName="serialCarroceria" [ngClass]="{ 'invalid':
+    CarForm.controls['serialCarroceria'].invalid &&
+    CarForm.controls['serialCarroceria'].touched &&
+    CarForm.controls['serialCarroceria'].errors}">
+    <input type="text" class="form-control" placeholder="Serial Motor" formControlName="serialMotor" [ngClass]="{ 'invalid':
+    CarForm.controls['serialMotor'].invalid &&
+    CarForm.controls['serialMotor'].touched &&
+    CarForm.controls['serialMotor'].errors}">
+    <input type="text" class="form-control" placeholder="Uso" formControlName="uso" [ngClass]="{ 'invalid':
+    CarForm.controls['uso'].invalid &&
+    CarForm.controls['uso'].touched &&
+    CarForm.controls['uso'].errors}">
+    <input type="text" class="form-control" placeholder="Tipo" formControlName="tipo" [ngClass]="{ 'invalid':
+    CarForm.controls['tipo'].invalid &&
+    CarForm.controls['tipo'].touched &&
+    CarForm.controls['tipo'].errors}">
+    <input type="text" class="form-control" placeholder="Color" formControlName="color" [ngClass]="{ 'invalid':
+    CarForm.controls['color'].invalid &&
+    CarForm.controls['color'].touched &&
+    CarForm.controls['color'].errors}">
+    <input type="number" class="form-control" placeholder="Anualidad" formControlName="anualidad" [ngClass]="{ 'invalid':
+    CarForm.controls['anualidad'].invalid &&
+    CarForm.controls['anualidad'].touched &&
+    CarForm.controls['anualidad'].errors}">
+    <input type="number" class="form-control" placeholder="Puestos" formControlName="puestos" [ngClass]="{ 'invalid':
+    CarForm.controls['puestos'].invalid &&
+    CarForm.controls['puestos'].touched &&
+    CarForm.controls['puestos'].errors}">
 
 
     <div class="d-flex justify-content-center gap-1">

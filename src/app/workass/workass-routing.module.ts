@@ -3,9 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { WorkassComponent } from './workass.component';
-import { UserCarlistComponent } from './components/user-carlist/user-carlist.component';
-import { UserFormCarListComponent } from './components/user-form-car-list/user-form-car-list.component';
+
+import { UserFormcarListComponent } from './components/user-form-car-list/user-form-car-list.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ListEmployeesComponent } from './components/list-employees/list-employees.component';
+import { UsercarListComponent } from './components/user-carList/user-carList.component';
 
 const routes: Routes = [
   {
@@ -13,28 +15,31 @@ const routes: Routes = [
     component: WorkassComponent,
     children: [
       {
-        path:'home', component: UserListComponent
+        path:'Usuarios', component: UserListComponent
       },
       {
-        path:'createUser', component: UserFormComponent
+        path:'CrearUsuario', component: UserFormComponent
       },
       {
-        path:'editUser/:id', component: UserFormComponent
+        path:'EditarUsuario/:id', component: UserFormComponent
       },
       {
-        path:':id/carList', component: UserCarlistComponent
+        path:':id/carList', component: UsercarListComponent
       },
       {
-        path:':id/createCar', component: UserFormCarListComponent
+        path:':id/CrearVehicle', component: UserFormcarListComponent
       },
       {
-        path:'id/editCar/:idCar', component: UserFormCarListComponent
+        path:'id/editarVehicle/:idCar', component: UserFormcarListComponent
       },
       {
-        path:'createEmployee', component: RegisterComponent
+        path:'CrearEmpleado', component: RegisterComponent
       },
       {
-        path:'**', redirectTo: 'home'
+        path:'ListaEmpleados', component: ListEmployeesComponent
+      },
+      {
+        path:'**', redirectTo: 'Usuarios'
       }
     ]
   }

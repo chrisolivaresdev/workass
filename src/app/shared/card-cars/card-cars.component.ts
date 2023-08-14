@@ -8,20 +8,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./card-cars.component.css']
 })
 export class CardCarsComponent implements OnInit {
-  @Input() user!:any
-  @Output() DeletecarById =  new EventEmitter<number>()
+  @Input() vehicle!:any
+  @Output() DeletecarById =  new EventEmitter<any>()
+  @Output() editVehicleById =  new EventEmitter<any>()
+
+
+  constructor(private router:Router) {
+  }
+
   ngOnInit(): void {
   }
 
-  constructor(private router:Router) {
-
-   }
-
-  editUser(id:number) {
-  this.router.navigateByUrl(`editUser/${id}`)
+   editVehicle(id:any) {
+    this.editVehicleById.emit(id)
   }
 
-  deleteUser(id:number){
+  deleteVehicle(id:any){
     Swal.fire({
       title: "Estas seguro",
       text: "Quieres eliminar el usuario",
