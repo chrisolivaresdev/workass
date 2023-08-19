@@ -30,7 +30,7 @@ const routes: Routes = [
         path:':id/CrearVehicle', component: UserFormcarListComponent
       },
       {
-        path:'id/editarVehicle/:idCar', component: UserFormcarListComponent
+        path:':id/editarVehicle/:idCar', component: UserFormcarListComponent
       },
       {
         path:'CrearEmpleado', component: RegisterComponent

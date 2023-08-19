@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
   }
 
   lastPage(){
-    this.router.navigate(['/Usuarios'])
+    this.router.navigate(['/ListaEmpleados'])
   }
 
   viewEmployees(){

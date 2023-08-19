@@ -12,7 +12,9 @@ export class ListEmployeesComponent implements OnInit {
 
   employees!:any[]
   data:any
-
+  elementosPorPagina: number = 4;
+  paginaActual: number = 1;
+  math = Math.ceil
 
   constructor( private router:Router, private EmployeesService:EmployeesService) { }
 
@@ -37,10 +39,10 @@ export class ListEmployeesComponent implements OnInit {
       this.ngOnInit()
     }, (err) => {
       Swal.fire({
-        icon: 'warning',
-        title: "Upps!!",
-        text: err
-      })
+    icon: 'warning',
+    title: "Upps!!",
+    text: err.error.message
+  })
     })
   }
 
@@ -48,11 +50,21 @@ export class ListEmployeesComponent implements OnInit {
     this.router.navigate(['/Usuarios'])
   }
 
-  nextPage(){
-
+  obtenerElementosPagina(): any[] {
+    const startIndex = (this.paginaActual - 1) * this.elementosPorPagina;
+    const endIndex = startIndex + this.elementosPorPagina;
+    return this.employees.slice(startIndex, endIndex);
   }
 
-  lastPage(){
+  paginaSiguiente(): void {
+    if (this.paginaActual < Math.ceil(this.employees.length / this.elementosPorPagina)) {
+      this.paginaActual++;
+    }
+  }
 
+  paginaAnterior(): void {
+    if (this.paginaActual > 1) {
+      this.paginaActual--;
+    }
   }
 }

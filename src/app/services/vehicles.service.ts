@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class VehiclesService {
 
-  baseUrl = `${environment.BaseUrl}/api/v1/vehicle`
+  baseUrl = `${environment.BaseUrl}/api/v1/vehicles`
 
   constructor( private http: HttpClient, private route:Router ) { }
 
@@ -18,11 +18,11 @@ export class VehiclesService {
   }
 
   getId(id:any){
-    return this.http.get<any>(`${this.baseUrl}/${id}`)
+    return this.http.get<any>(`${this.baseUrl}/by/${id}`)
   }
 
   putVehicles(id:any, body:any){
-    return this.http.put(`${this.baseUrl}/${id}`, body)
+    return this.http.put(`${this.baseUrl}/update/${id}`, body)
   }
 
   postVehicles(body:any){
@@ -30,6 +30,6 @@ export class VehiclesService {
   }
 
   deleteVehicles(id:any){
-    return this.http.delete(`${this.baseUrl}/${id}`)
+    return this.http.delete(`${this.baseUrl}/delete/${id}`)
   }
 }

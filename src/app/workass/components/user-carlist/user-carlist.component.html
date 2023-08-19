@@ -18,11 +18,11 @@
 
 
 <div class="container p-3 d-flex justify-content-between animate__animated animate__fadeInLeft" *ngIf="vehicles">
-  <button (click)="lastPage()">
+  <button (click)="paginaAnterior()" [disabled]="paginaActual === 1">
     Pagina anterior
   </button>
 
-  <button (click)="nextPage()">
+  <button (click)="paginaSiguiente()" [disabled]="paginaActual === math(vehicles.length / elementosPorPagina)">
     Pagina siguiente
   </button>
 </div>

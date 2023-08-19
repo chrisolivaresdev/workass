@@ -24,7 +24,6 @@ export class UserFormComponent implements OnInit {
 
   constructor(private fb:FormBuilder, private router:Router, private activateRoute:ActivatedRoute, private UserService:UserService) {
     this.userForm = this.fb.group({
-      numero_control: ['', [Validators.required,]],
       fecha_ingreso: ['', [Validators.required]],
       nombre_contratante: ['', [Validators.required]],
       cedula_contratante:['', [Validators.required]],
@@ -33,7 +32,6 @@ export class UserFormComponent implements OnInit {
       nombre_beneficiario:['', [Validators.required]],
       cedula_beneficiario:['', [Validators.required]],
       promotor:['', [Validators.required]],
-      numero_factura:['', [Validators.required]],
       fecha_vencimiento:['', [Validators.required]],
     })
 
@@ -58,7 +56,6 @@ export class UserFormComponent implements OnInit {
     this.UserService.getId(id).subscribe( resp => {
       const user = resp
       if(user){
-        this.userForm.controls['numero_control'].setValue(user.numero_control);
         this.userForm.controls['fecha_ingreso'].setValue(user.fecha_ingreso);
         this.userForm.controls['nombre_contratante'].setValue(user.nombre_contratante);
         this.userForm.controls['cedula_contratante'].setValue(user.cedula_contratante);
@@ -67,7 +64,6 @@ export class UserFormComponent implements OnInit {
         this.userForm.controls['nombre_beneficiario'].setValue(user.nombre_beneficiario);
         this.userForm.controls['cedula_beneficiario'].setValue(user.cedula_beneficiario);
         this.userForm.controls['promotor'].setValue(user.promotor);
-        this.userForm.controls['numero_factura'].setValue(user.numero_factura);
         this.userForm.controls['fecha_vencimiento'].setValue(user.fecha_vencimiento);
       }
     })
@@ -88,10 +84,10 @@ export class UserFormComponent implements OnInit {
         })
         this.router.navigate(['/Usuarios'])
       }, (err) => {
-        Swal.fire({
+         Swal.fire({
           icon: 'warning',
           title: "Upps!!",
-          text: err
+          text: err.error.message
         })
       })
       this.router.navigate(['/Usuarios'])
@@ -107,10 +103,11 @@ export class UserFormComponent implements OnInit {
         this.userForm.reset()
         this.router.navigate(['/Usuarios'])
       }, (err) => {
-        Swal.fire({
+      console.log(err)
+         Swal.fire({
           icon: 'warning',
           title: "Upps!!",
-          text: err
+          text: err.error.message
         })
       })
     }

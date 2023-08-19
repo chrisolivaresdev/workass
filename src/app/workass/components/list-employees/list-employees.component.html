@@ -1,5 +1,4 @@
 <span class="back-icon"><i class="fas fa-arrow-left" (click)="backPage()"></i></span>
-
   <app-spinner *ngIf="!employees">
 </app-spinner>
 
@@ -10,17 +9,17 @@
 </div>
 
 <div class="container p-3 d-flex justify-content-center gap-3 flex-wrap animate__animated animate__fadeInLeft" *ngIf="employees">
-  <ng-container *ngFor="let employee of employees">
+  <ng-container *ngFor="let employee of obtenerElementosPagina()">
     <app-card-employees [employee]="employee" (deleteEmployee)="deleteEmployee($event)"></app-card-employees>
   </ng-container>
 </div>
 
 <div class="container p-3 d-flex justify-content-center gap-3 animate__animated animate__fadeInLeft" *ngIf="employees">
-  <button (click)="lastPage()">
+  <button (click)="paginaAnterior()" [disabled]="paginaActual === 1">
     Pagina anterior
   </button>
 
-  <button (click)="nextPage()" *ngIf="employees">
+  <button (click)="paginaSiguiente()" [disabled]="paginaActual === math(employees.length / elementosPorPagina)">
     Pagina siguiente
   </button>
 </div>

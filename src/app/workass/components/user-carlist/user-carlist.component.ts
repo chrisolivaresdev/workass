@@ -13,6 +13,9 @@ export class UsercarListComponent implements OnInit {
 
   vehicles!:[]
   id:any
+  elementosPorPagina: number = 4;
+  paginaActual: number = 1;
+  math = Math.ceil
 
   constructor( private router:Router, private activateRoute:ActivatedRoute, private VehicleService:VehiclesService) { }
 
@@ -27,6 +30,24 @@ export class UsercarListComponent implements OnInit {
       });
     }
 
+  }
+
+  obtenerElementosPagina(): any[] {
+    const startIndex = (this.paginaActual - 1) * this.elementosPorPagina;
+    const endIndex = startIndex + this.elementosPorPagina;
+    return this.vehicles.slice(startIndex, endIndex);
+  }
+
+  paginaSiguiente(): void {
+    if (this.paginaActual < Math.ceil(this.vehicles.length / this.elementosPorPagina)) {
+      this.paginaActual++;
+    }
+  }
+
+  paginaAnterior(): void {
+    if (this.paginaActual > 1) {
+      this.paginaActual--;
+    }
   }
 
 
@@ -46,14 +67,16 @@ export class UsercarListComponent implements OnInit {
       this.ngOnInit()
     }, (err) => {
       Swal.fire({
-        icon: 'warning',
-        title: "Upps!!",
-        text: err
-      })
+    icon: 'warning',
+    title: "Upps!!",
+    text: err.error.message
+  })
     })
   }
 
   editVehicleById(id:any){
+    console.log('pasando')
+    console.log(id)
     this.router.navigate([`${this.id}/editarVehicle/${id}`])
   }
 

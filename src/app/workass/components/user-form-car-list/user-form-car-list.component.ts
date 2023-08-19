@@ -60,6 +60,7 @@ export class UserFormcarListComponent implements OnInit {
 
   getVehiclesById(id:any){
     this.VehicleService.getId(id).subscribe( resp => {
+      console.log(resp)
       const car = resp
       if(car){
         this.CarForm.controls['clase'].setValue(car.clase);
@@ -85,19 +86,19 @@ export class UserFormcarListComponent implements OnInit {
   save(){
 
     if( this.isEdit){
-    this.VehicleService.putVehicles(this.id, this.CarForm.value).subscribe(resp => {
+    this.VehicleService.putVehicles(this.idCar, this.CarForm.value).subscribe(resp => {
       Swal.fire({
         icon: 'success',
         title: "Bien!!",
         text: "Editado correctamente"
       })
-      this.router.navigate(['/Usuarios'])
+      this.router.navigate([`${this.id}/carList`])
     }, (err) => {
       Swal.fire({
-        icon: 'warning',
-        title: "Upps!!",
-        text: err
-      })
+    icon: 'warning',
+    title: "Upps!!",
+    text: err.error.message
+  })
     })
     } else {
       this.VehicleService.postVehicles(this.CarForm.value).subscribe(resp => {
@@ -107,12 +108,13 @@ export class UserFormcarListComponent implements OnInit {
           title: "Bien!!",
           text: "Usuario creado correctamente"
         })
-        this.router.navigate(['/Usuarios'])
+        this.router.navigate([`${this.id}/carList`])
       }, (err) => {
+        console.log(err.message)
         Swal.fire({
           icon: 'warning',
           title: "Upps!!",
-          text: err
+          text: err.error.message
         })
       }
     )

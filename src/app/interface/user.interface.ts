@@ -1,6 +1,6 @@
 
 export interface User {
-  numero_control:        number;
+  numero_control?:        number;
   fecha_ingreso:         Date;
   nombre_contratante:    string;
   cedula_contratante:    string;
@@ -9,6 +9,6 @@ export interface User {
   nombre_beneficiario:   string;
   cedula_beneficiario:   string;
   promotor:              string;
-  numero_factura:        number;
+  numero_factura?:        number;
   fecha_vencimiento:     Date;
 }

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { WorkassRoutingModule } from './workass-routing.module';
 import { WorkassComponent } from './workass.component';
 import { SharedModule } from '../shared/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -26,7 +26,8 @@ import { UserFormcarListComponent } from './components/user-form-car-list/user-f
     CommonModule,
     WorkassRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class WorkassModule { }
