@@ -3,7 +3,7 @@
 
 <div class="container p-3 d-flex justify-content-between animate__animated animate__fadeInLeft" *ngIf="users">
   <button (click)="ListaEmpleado()">
-    Crear empleado
+    Ver empleados
   </button>
   <form class="d-flex justify-content-center align-items-center">
     <input type="text" class="form-control" placeholder="Buscar" [formControl]="filtroTexto"/>
@@ -26,11 +26,8 @@
     Pagina anterior
   </button>
 
+
   <button (click)="paginaSiguiente()" [disabled]="paginaActual === math(users.length / elementosPorPagina)">
     Pagina siguiente
   </button>
 </div>
-
-
-
-

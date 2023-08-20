@@ -14,7 +14,9 @@
       <p class="card-text"><strong>Puestos:</strong> {{vehicle.puestos}} </p>
     </div>
       <div class="card-icons">
+        <span class="edit-icon"><i class="fas fa-file-invoice" (click)="generatePDF()"></i></span>
         <span class="edit-icon"><i class="fas fa-pencil-alt" (click)="editVehicle(vehicle._id)"></i></span>
         <span class="delete-icon"><i class="fas fa-trash-alt" (click)="deleteVehicle(vehicle._id)"></i></span>
+
       </div>
   </div>

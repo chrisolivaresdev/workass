@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -6,13 +6,13 @@ import { User } from 'src/app/interface/user.interface';
 import Swal from 'sweetalert2';
 import { UserService } from '../../../services/user.service';
 
+
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-
 
   users!:User[]
   data:any
@@ -43,6 +43,9 @@ export class UserListComponent implements OnInit {
       });
 
   }
+
+
+
 
   obtenerElementosFiltrados(): any[] {
     const elementosPagina = this.users;
