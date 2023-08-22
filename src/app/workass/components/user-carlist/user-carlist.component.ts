@@ -75,8 +75,6 @@ export class UsercarListComponent implements OnInit {
   }
 
   editVehicleById(id:any){
-    console.log('pasando')
-    console.log(id)
     this.router.navigate([`${this.id}/editarVehicle/${id}`])
   }
 

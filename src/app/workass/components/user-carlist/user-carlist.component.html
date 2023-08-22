@@ -3,7 +3,7 @@
 <app-spinner *ngIf="!vehicles">
 </app-spinner>
 
-<div class="container p-3 d-flex justify-content-center animate__animated animate__fadeInLeft" *ngIf="vehicles">
+<div class="container p-3 d-flex justify-content-end animate__animated animate__fadeInLeft" *ngIf="vehicles">
   <button (click)="CrearVehicle()">
     Crear
   </button>
@@ -13,11 +13,9 @@
   <ng-container *ngFor="let vehicle of vehicles">
     <app-card-cars [vehicle]="vehicle" (editVehicleById)="editVehicleById($event)" (DeletecarById)="DeleteCarById($event)"></app-card-cars>
   </ng-container>
-
 </div>
 
-
-<div class="container p-3 d-flex justify-content-between animate__animated animate__fadeInLeft" *ngIf="vehicles">
+<div class="container p-3 d-flex justify-content-center gap-3 animate__animated animate__fadeInLeft" *ngIf="vehicles">
   <button (click)="paginaAnterior()" [disabled]="paginaActual === 1">
     Pagina anterior
   </button>
@@ -26,7 +24,3 @@
     Pagina siguiente
   </button>
 </div>
-
-
-
-

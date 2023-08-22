@@ -2,11 +2,11 @@
 </app-spinner>
 
 <div class="container p-3 d-flex justify-content-between animate__animated animate__fadeInLeft" *ngIf="users">
-  <button (click)="ListaEmpleado()">
+  <button (click)="ListaEmpleado()" *ngIf="role">
     Ver empleados
   </button>
   <form class="d-flex justify-content-center align-items-center">
-    <input type="text" class="form-control" placeholder="Buscar" [formControl]="filtroTexto"/>
+    <input type="text" class="form-control" placeholder="Buscar" [formControl]="filtroTexto" style="width: 350px;"/>
   </form>
   <button (click)="CrearUsuario()">
     Crear usuario
@@ -17,15 +17,12 @@
   <ng-container *ngFor="let user of obtenerElementosPagina(); let i = index">
     <app-card [user]="user" (DeleteUserById)="DeleteUserById($event)"></app-card>
   </ng-container>
-
 </div>
-
 
 <div class="container p-3 d-flex justify-content-center gap-3 animate__animated animate__fadeInLeft" *ngIf="users">
   <button (click)="paginaAnterior()" [disabled]="paginaActual === 1">
     Pagina anterior
   </button>
-
 
   <button (click)="paginaSiguiente()" [disabled]="paginaActual === math(users.length / elementosPorPagina)">
     Pagina siguiente

@@ -23,6 +23,8 @@ export class AuthService {
    .pipe(
     tap( (resp:any) => {
       localStorage.setItem('token', resp.token)
+      localStorage.setItem('role', resp.role)
+      localStorage.setItem('nombre', resp.name)
     }),
     map( resp => true)
    )

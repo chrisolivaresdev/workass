@@ -23,10 +23,17 @@ export class UserListComponent implements OnInit {
 
   math = Math.ceil
 
+  role:boolean = false
+
 
   constructor( private router:Router, private UserService:UserService) { }
 
   ngOnInit(): void {
+
+    if(localStorage.getItem('role') !== 'Empleado'){
+      this.role = true
+    }
+
     this.UserService.getUsers().subscribe(resp=> {
       this.data = resp
       this.users = this.data.data

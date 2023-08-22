@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import * as QRCode from 'qrcode';
@@ -16,30 +17,18 @@ export class CardCarsComponent implements OnInit {
   @Output() editVehicleById =  new EventEmitter<any>()
 
 
-  constructor(private router:Router) {
+  constructor(private router:Router, private datePipe: DatePipe) {
   }
 
   ngOnInit(): void {
-    console.log(this.vehicle)
   }
 
   async generatePDF() {
     const doc = new jsPDF();
 
     const data = this.vehicle
-
-    // Agregar imagen desde la carpeta "assets"
-    const img = new Image();
-    img.src = 'assets/img/logo.jpeg'; // Ruta a tu imagen en la carpeta "assets"
-
-    // Asegúrate de que la imagen se haya cargado antes de agregarla al PDF
-    img.onload = async (resolve) => {
-
-
-     // Añadir la imagen al PDF en una posición específica
-      // @ts-ignore
-      doc.addImage(img, 'JPEG', 15, 5 , 50, 30);
-           // Generar un código QR
+    data.precio_unitario = 10
+       // Generar un código QR
      const qrData = `
     anualidad: ${data.anualidad}
     clase: ${data.clase}
@@ -73,68 +62,92 @@ export class CardCarsComponent implements OnInit {
 
      // Agregar el código QR al PDF
      // @ts-ignore
-     doc.addImage(qrDataUri, 'PNG', 10, 120, 40, 40);
+     doc.addImage(qrDataUri, 'PNG', 70, 278, 15, 15);
 
+    doc.setTextColor(255, 0, 0);
+    doc.text(`Nº ${data.propietario.numero_factura}`, 50, 45);
+    doc.text(`${data.propietario.numero_control}`, 150, 45);
 
-     doc.save('factura.pdf');
-      resolve
-    };
-
-    doc.setFontSize(22);
-    doc.setTextColor(52, 122, 229);
-    doc.text('Tu seguridad en todos lados . . .', 80, 12);
-    doc.setFontSize(8);
-    doc.text('Dirección: Av. Intercomunal Edif. Mar a Piso P/b', 95, 18);
-    doc.text("Local 1-A, Sector R:10, Municipio Cabimas, Estado Zulia", 95, 22);
-    doc.text('Telf. 0424-6616970 / E-mail:worcassca@gmail.com', 95, 26);
+    doc.setTextColor(60, 60, 60)
     doc.setFontSize(12);
-    doc.text('Exento',130, 130);
+    doc.text(`Contratante: ${data.propietario.nombre_contratante}`, 25, 55);
+    doc.text(`Fecha de emisión: ${this.datePipe.transform(data.propietario.fecha_ingreso, 'dd/MM/yyyy ', 'UTC')}`, 140, 55);
+    doc.text(`Rif / C.I.: ${data.propietario.cedula_contratante}`, 25, 60);
 
-    doc.text("Subtotal", 130, 135);
+    doc.text(`Dirección: ${data.propietario.direccion_contratante}`, 25, 70);
+    doc.text(`Forma de pago: CONTADO`, 140, 70);
 
-    doc.text("Iva(16%)", 130, 141);
+
+    doc.text(`Telefono(s): ${data.propietario.telefono_contratante}`, 25, 90);
+    doc.text(`Vendedor: ${data.propietario.promotor}`, 140, 90);
+
+    doc.setFontSize(10);
+    doc.text(`Contrato`, 20, 110);
+    doc.text(`${data.contrato}`, 20, 115);
+
+    doc.text(`Clase`, 40, 110);
+    doc.text(`${data.clase}`, 40, 115);
+
+    doc.text(`Marca`, 60, 110);
+    doc.text(`${data.marca}`, 60, 115);
+
+    doc.text(`Modelo`, 80, 110);
+    doc.text(`${data.modelo}`, 80, 115);
+
+    doc.text(`Color`, 100, 110);
+    doc.text(`${data.color}`, 100, 115);
+
+    doc.text(`Placa`, 120, 110);
+    doc.text(`${data.placa}`, 120, 115);
+
+    doc.text(`Precio Unitario`, 140, 110);
+    doc.text(`${data.precio_unitario}`, 140, 115);
+
+    doc.text(`Base disponible`, 170, 110);
+    doc.text(`${data.precio_unitario}`, 170, 115);
+
+
+    doc.setFontSize(12);
+    doc.text('Exento',130, 170);
+
+    doc.text(`Subtotal: ${data.precio_unitario}`, 130, 180);
+
+    doc.text(`Iva(16%): ${data.precio_unitario * 0.16}`, 130, 185);
     doc.setFontSize(14);
-    doc.text('Total', 130,  151);
+    doc.text(`Total: ${data.precio_unitario +  data.precio_unitario * 0.16}`, 130, 195);
+
+    doc.setFontSize(8);
+    doc.text(`Certificado de datos de rcv`, 68, 245);
+    doc.setFontSize(6);
+    doc.text(`Nª Factura: ${data.propietario.numero_factura}`, 40, 250);
+    doc.text(`Contratante: ${data.propietario.nombre_contratante}`, 40, 255);
+    doc.text(`Rif / C.I.: ${data.propietario.cedula_contratante}`, 40, 260);
+    doc.setFontSize(8);
+    doc.text(`Descripcion del vehiculo`, 50, 265);
+    doc.setFontSize(6);
+    doc.text(`Placa: ${data.placa}`, 40, 270);
+    doc.text(`Marca: ${data.marca}`, 40, 275);
+    doc.text(`Tipo: ${data.tipo}`, 40, 280);
+    doc.text(`Modelo: ${data.modelo}`, 40, 285);
+    doc.text(`Clase: ${data.clase}`, 40, 290);
+    doc.text(`S.Carrocería: ${data.serialCarroceria}`, 70, 260);
+    doc.text(`Color: ${data.color}`, 70, 270);
+    doc.text(`Año:  ${this.datePipe.transform(data.propietario.fecha_ingreso, 'yyyy', 'UTC')} / ${this.datePipe.transform(data.propietario.fecha_vencimiento, 'yyyy', 'UTC')}`, 70, 275);
+    doc.text(`Nª Control: ${data.contrato}`, 70, 250);
+    doc.setFontSize(6);
+    doc.text(`F. Emision: ${this.datePipe.transform(data.propietario.fecha_ingreso, 'dd/MM/yyyy', 'UTC')}`, 140, 255);
+    doc.text(`F. Vencimiento: ${this.datePipe.transform(data.propietario.fecha_vencimiento, 'dd/MM/yyyy', 'UTC')}`, 140, 260);
+    doc.setFontSize(8);
 
 
+    doc.text(`Se agradece a las autoridades brindar apoyo`, 125, 270);
+    doc.text(`al portador de este carnet`, 135, 275);
+    doc.setFontSize(6);
+    doc.text(`Oficina: avenida intercomunal. Sector R:10 Edificio Marba PB`, 125, 280);
+    doc.text(`Local, 1-A Parroquia La Rosa, Cabimas, Estado Zulia`, 130, 285);
 
-    const tableData = [
-      [ `Factura: ${data.propietario.numero_factura}`,`Nª de control: ${data.propietario.numero_control}`],
-      [`Contratante: ${data.propietario.nombre_contratante}`, `Fecha de ingreso: ${data.propietario.fecha_ingreso}`],
-      [`Rif / C.I.: ${data.propietario.cedula_contratante}`],
-      [`Telefono: ${data.propietario.telefono_contratante}`, `Vendedor: Winder`],
-    ];
-
-    // @ts-ignore
-    doc.autoTable({
-      startY: 40,
-      head: [tableData[0]],
-      body: tableData.slice(1),
-      didDrawPage: function(data : any) {
-        console.log(data)
-        // Footer
-        const pageSize = doc.internal.pageSize;
-        const footerY = pageSize.height - 10;
-      }
-    });
-
-    const tableData2 = [
-      [ 'Contrato',`Clase`, 'Marca', 'Modelo', 'Color', 'Placa', 'Precio unitario', 'Base disponible'],
-      [ `${data.propietario.numero_control}`,`${data.clase}`, `${data.marca}`, `${data.modelo}`, `${data.color}`, `${data.placa}`, 'Precio unitario', 'Base disponible'],
-    ];
-
-      // @ts-ignore
-      doc.autoTable({
-        startY: 70,
-        head: [tableData2[0]],
-        body: tableData2.slice(1),
-        didDrawPage: function(data : any) {
-          console.log(data)
-          // Footer
-          const pageSize = doc.internal.pageSize;
-          const footerY = pageSize.height - 10;
-        }
-      });
+    doc.autoPrint({variant: 'non-conform'});
+     doc.save('factura.pdf');
   }
 
    editVehicle(id:any) {

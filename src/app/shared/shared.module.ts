@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe  } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { CardComponent } from './card/card.component';
@@ -24,6 +24,9 @@ import { CardEmployeesComponent } from './card-employees/card-employees.componen
     CardComponent,
     CardCarsComponent,
     CardEmployeesComponent
+  ],
+  providers: [
+    DatePipe // Agrega DatePipe como proveedor
   ]
 })
 export class SharedModule { }

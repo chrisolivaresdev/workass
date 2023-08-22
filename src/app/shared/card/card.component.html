@@ -2,6 +2,7 @@
     <div class="card-body">
       <h5 class="card-title">Contratante: {{user.nombre_contratante}}</h5>
       <p class="card-text"><strong> N. control:</strong> {{user.numero_control}}</p>
+      <p class="card-text"><strong> N. Factura:</strong> {{user.numero_factura}}</p>
       <p class="card-text"><strong> F. ingreso: </strong>{{user.fecha_ingreso | date :'dd/MM/yyyy'}}</p>
       <p class="card-text"><strong> Cedula:</strong> {{user.cedula_contratante}}</p>
       <p class="card-text"><strong> Telefono:</strong>{{user.telefono_contratante}}</p>
@@ -9,7 +10,6 @@
       <p class="card-text"><strong> Beneficiario:</strong>{{user.nombre_beneficiario}}</p>
       <p class="card-text"><strong> Cedula:</strong> {{user.cedula_beneficiario}}</p>
       <p class="card-text"><strong> Promotor:</strong> {{user.promotor}}</p>
-      <p class="card-text"><strong> N. Factura:</strong> {{user.numero_factura}}</p>
       <p class="card-text"><strong> F. Vencimiento:</strong> {{user.fecha_vencimiento | date :'dd/MM/yyyy'}}</p>
     </div>
       <div class="card-icons">

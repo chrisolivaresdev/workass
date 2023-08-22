@@ -28,6 +28,8 @@ export class UserFormcarListComponent implements OnInit {
     color:['', [Validators.required]],
     anualidad:['', [Validators.required]],
     puestos:['', [Validators.required]],
+    precio_unitario:['', [Validators.required]],
+    contrato:['', [Validators.required]],
   })
 
   constructor(private fb:FormBuilder, private router:Router, private activateRoute:ActivatedRoute, private VehicleService:VehiclesService) {
@@ -60,7 +62,6 @@ export class UserFormcarListComponent implements OnInit {
 
   getVehiclesById(id:any){
     this.VehicleService.getId(id).subscribe( resp => {
-      console.log(resp)
       const car = resp
       if(car){
         this.CarForm.controls['clase'].setValue(car.clase);
@@ -74,6 +75,10 @@ export class UserFormcarListComponent implements OnInit {
         this.CarForm.controls['color'].setValue(car.color);
         this.CarForm.controls['anualidad'].setValue(car.anualidad);
         this.CarForm.controls['puestos'].setValue(car.puestos);
+        this.CarForm.controls['precio_unitario'].setValue(car.precio_unitario);
+        this.CarForm.controls['contrato'].setValue(car.contrato);
+
+
       }
     })
 

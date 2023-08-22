@@ -24,6 +24,7 @@ export class UserFormComponent implements OnInit {
 
   constructor(private fb:FormBuilder, private router:Router, private activateRoute:ActivatedRoute, private UserService:UserService) {
     this.userForm = this.fb.group({
+      numero_control: ['', [Validators.required,]],
       fecha_ingreso: ['', [Validators.required]],
       nombre_contratante: ['', [Validators.required]],
       cedula_contratante:['', [Validators.required]],
@@ -31,10 +32,10 @@ export class UserFormComponent implements OnInit {
       direccion_contratante:['', [Validators.required]],
       nombre_beneficiario:['', [Validators.required]],
       cedula_beneficiario:['', [Validators.required]],
-      promotor:['', [Validators.required]],
+      promotor:[localStorage.getItem('nombre'), [Validators.required]],
+      numero_factura:['', [Validators.required]],
       fecha_vencimiento:['', [Validators.required]],
     })
-
   }
 
   ngOnInit(): void {
@@ -48,8 +49,6 @@ export class UserFormComponent implements OnInit {
         },
       });
     }
-
-
   }
 
   getUserById(id:any){
@@ -65,6 +64,8 @@ export class UserFormComponent implements OnInit {
         this.userForm.controls['cedula_beneficiario'].setValue(user.cedula_beneficiario);
         this.userForm.controls['promotor'].setValue(user.promotor);
         this.userForm.controls['fecha_vencimiento'].setValue(user.fecha_vencimiento);
+        this.userForm.controls['numero_control'].setValue(user.numero_control);
+        this.userForm.controls['numero_factura'].setValue(user.numero_factura);
       }
     })
   }
