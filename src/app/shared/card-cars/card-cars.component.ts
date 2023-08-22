@@ -30,30 +30,28 @@ export class CardCarsComponent implements OnInit {
     data.precio_unitario = 10
        // Generar un código QR
      const qrData = `
-    anualidad: ${data.anualidad}
-    clase: ${data.clase}
-    color:  ${data.color}
-    marca:  ${data.marca}
-    modelo:  ${data.modelo}
-    placa:  ${data.placa}
-    puestos:  ${data.puestos}
-    serialCarroceria:  ${data.serialCarroceria}
-    serialMotor:  ${data.serialMotor}
+    Anualidad: ${data.anualidad}
+    Clase: ${data.clase}
+    Color:  ${data.color}
+    Marca:  ${data.marca}
+    Modelo:  ${data.modelo}
+    Placa:  ${data.placa}
+    Puestos:  ${data.puestos}
+    Serial de la carroceria:  ${data.serialCarroceria}
+    Serial de motor:  ${data.serialMotor}
     tipo:  ${data.tipo}
     uso:  ${data.uso}
-    propietario: {
-    cedula_beneficiario: ${data.propietario.cedula_beneficiario}
-    cedula_contratante: ${data.propietario.cedula_contratante}
-    direccion_contratante: ${data.propietario.direccion_contratante}
-    fecha_ingreso: ${data.propietario.fecha_ingreso}
-    fecha_vencimiento: ${data.propietario.fecha_vencimiento}
-    nombre_beneficiario: ${data.propietario.nombre_beneficiario}
-    nombre_contratante: ${data.propietario.nombre_contratante}
-    numero_control: ${data.propietario.numero_control}
-    numero_factura: ${data.propietario.numero_factura}
-    promotor: ${data.propietario.promotor}
-    telefono_contratante: ${data.propietario.telefono_contratante}
-    }`
+    Propietario:
+    Cedula del beneficiario: ${data.propietario.cedula_beneficiario}
+    Cedula del contratante: ${data.propietario.cedula_contratante}
+    Direccion del contratante: ${data.propietario.direccion_contratante}
+    Fecha de ingreso: ${this.datePipe.transform(data.propietario.fecha_ingreso, 'dd/MM/yyyy', 'UTC')},
+    Fecha de vencimiento: ${this.datePipe.transform(data.propietario.fecha_vencimiento, 'dd/MM/yyyy', 'UTC')},
+    Nombre del contratante: ${data.propietario.nombre_contratante}
+    Numero de control: ${data.propietario.numero_control}
+    Numero de factura: ${data.propietario.numero_factura}
+    Promotor: ${data.propietario.promotor}
+    Telefono del contratante: ${data.propietario.telefono_contratante}`
 
      const qrCanvas = await QRCode.toCanvas(qrData);
 
@@ -61,8 +59,7 @@ export class CardCarsComponent implements OnInit {
      const qrDataUri = qrCanvas.toDataURL('image/png');
 
      // Agregar el código QR al PDF
-     // @ts-ignore
-     doc.addImage(qrDataUri, 'PNG', 70, 278, 15, 15);
+
 
     doc.setTextColor(255, 0, 0);
     doc.text(`Nº ${data.propietario.numero_factura}`, 50, 45);
@@ -135,8 +132,10 @@ export class CardCarsComponent implements OnInit {
     doc.text(`Año:  ${this.datePipe.transform(data.propietario.fecha_ingreso, 'yyyy', 'UTC')} / ${this.datePipe.transform(data.propietario.fecha_vencimiento, 'yyyy', 'UTC')}`, 70, 275);
     doc.text(`Nª Control: ${data.contrato}`, 70, 250);
     doc.setFontSize(6);
-    doc.text(`F. Emision: ${this.datePipe.transform(data.propietario.fecha_ingreso, 'dd/MM/yyyy', 'UTC')}`, 140, 255);
-    doc.text(`F. Vencimiento: ${this.datePipe.transform(data.propietario.fecha_vencimiento, 'dd/MM/yyyy', 'UTC')}`, 140, 260);
+         // @ts-ignore
+         doc.addImage(qrDataUri, 'PNG', 125, 247, 10, 10);
+    doc.text(`F. Emision: ${this.datePipe.transform(data.propietario.fecha_ingreso, 'dd/MM/yyyy', 'UTC')}`, 125, 260);
+    doc.text(`F. Vencimiento: ${this.datePipe.transform(data.propietario.fecha_vencimiento, 'dd/MM/yyyy', 'UTC')}`, 155, 260);
     doc.setFontSize(8);
 
 
