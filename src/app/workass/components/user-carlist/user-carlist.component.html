@@ -11,7 +11,7 @@
 
 <div class="container p-3 d-flex justify-content-center gap-3 flex-wrap animate__animated animate__fadeInLeft" *ngIf="vehicles">
   <ng-container *ngFor="let vehicle of vehicles">
-    <app-card-cars [vehicle]="vehicle" (editVehicleById)="editVehicleById($event)" (DeletecarById)="DeleteCarById($event)"></app-card-cars>
+    <app-card-cars [vehicle]="vehicle" (imprimir)="downloadPDF($event)" (editVehicleById)="editVehicleById($event)" (DeletecarById)="DeleteCarById($event)"></app-card-cars>
   </ng-container>
 </div>
 
@@ -23,4 +23,230 @@
   <button (click)="paginaSiguiente()" [disabled]="paginaActual === math(vehicles.length / elementosPorPagina)">
     Pagina siguiente
   </button>
+</div>
+
+
+<div id="contrato" style="position: absolute; left: -9999px; padding: 20px 20px;">
+  <div style="height:130px">
+  </div>
+  <div>
+    <table style="width: 100%; border-collapse: collapse; border: 2px solid #333; margin-top: 30px;">
+      <tr>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>N° DE CONTRATO</b></th>
+        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.contrato}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>N° DE FACTURA</b></th>
+        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.propietario.numero_factura}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>N° DE CONTROL</b></th>
+        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.propietario.numero_control}}</td>
+      </tr>
+      <tr>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>VIGENCIA DEL CONTRATO</b></th>
+        <td style=" border: 1px solid ;padding: 8px;">ANUAL</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>FECHA DE REGISTRO</b></th>
+        <td style=" border: 1px solid ;padding: 8px;">{{this.datePipe.transform(vehicle?.propietario.fecha_ingreso, 'yyyy', 'UTC')}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>FECHA DE VENCIMIENTO</b></th>
+        <td style=" border: 1px solid ;padding: 8px;">{{this.datePipe.transform(vehicle?.propietario.fecha_vencimiento, 'yyyy', 'UTC')}}</td>
+      </tr>
+      <tr>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>CONTRATANTE</b></th>
+        <td colspan="5" style=" border: 1px solid ;padding: 8px;">{{vehicle?.propietario.nombre_contratante}}</td>
+      </tr>
+      <tr>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>RIF/C.I.</b></th>
+        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.propietario.cedula_contratante}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>TELEFONO</b></th>
+        <td colspan="3" style="border: 1px solid ;padding: 8px;">{{vehicle?.propietario.telefono_contratante}}</td>
+      </tr>
+      <tr>
+
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>DIRECCIÓN DEL CONTRATANTE</b>
+        </th>
+        <td colspan="5" style=" border: 1px solid ;padding: 8px;">{{vehicle?.propietario.direccion_contratante}}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>VENDEDOR</b></th>
+        <td style=" border: 1px solid ;padding: 8px;"><b>{{vehicle?.propietario.promotor}}</b></td>
+      </tr>
+      <tr>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>BENEFICIARIO</b></th>
+        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.propietario.nombre_beneficiario}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>RIF/C.I.</b></th>
+        <td colspan="3" style=" border: 1px solid ;padding: 8px;">{{vehicle?.propietario.cedula_beneficiario}}</td>
+      </tr>
+    </table>
+
+    <h4 style="text-align:center; margin-top:20px; margin-bottom: 20px; font-size: 16px;"><b>DATOS DEL VEHICULO</b>
+    </h4>
+
+    <table
+      style="width: 100%; border-collapse: collapse; border: 2px solid #333; border-bottom: none; border-right: none;">
+      <tr>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>MARCA</b></th>
+        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.marca}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>MODELO</b></th>
+        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.modelo}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>CLASE</b></th>
+        <td style=" border: 1px solid ;padding: 8px;"><b>{{vehicle?.clase}}</b></td>
+      </tr>
+      <tr>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>SERIAL MOTOR</b></th>
+        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.serialMotor}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>SERIAL CARROCERÍA</b></th>
+        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.serialCarroceria}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>N° DE PLACA</b></th>
+        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.placa}}</td>
+      </tr>
+      <tr>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>USO</b></th>
+        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.uso}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>TIPO</b></th>
+        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.tipo}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>COLOR</b></th>
+        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.color}}</td>
+      </tr>
+      <tr>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;">AÑO</th>
+        <td style=" border: 1px solid ;padding: 8px;">{{this.datePipe.transform(vehicle?.propietario.fecha_ingreso, 'yyyy', 'UTC')}} / {{this.datePipe.transform(vehicle?.propietario.fecha_vencimiento, 'yyyy', 'UTC')}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>PUESTOS</b></th>
+        <td style="width: 20px !important; border: 1px solid ;padding: 8px;">{{vehicle?.puestos}}</td>
+      </tr>
+    </table>
+
+
+    <h4 style="text-align:center; margin-top:20px; margin-bottom: 20px; font-size: 16px;"><b>GARANTIAS</b></h4>
+
+    <table
+      style="width: 100%; border-collapse: collapse; border: 2px solid #333; border-left: none; border-top: none; border-bottom: none;">
+      <tr>
+        <td style="border: none;"></td>
+        <td style="border: none;"></td>
+        <th style="width:16%; border: 1px solid #666; background-color: #eee; padding: 8px;"><b>SUMA AFIANZADA</b></th>
+        <th style="width:16%; border: 1px solid #666; background-color: #eee; padding: 8px;"><b>TASA</b></th>
+        <th style="width:16%; border: 1px solid #666; background-color: #eee; padding: 8px;"><b>% DESC/RECARGO</b></th>
+        <th style="width:16%; border: 1px solid #666; background-color: #eee; padding: 8px;"><b>PRIMA</b></th>
+      </tr>
+      <tr>
+        <th style=" border: 1px solid ;padding: 8px; background-color: #eee;" rowspan="2"><b>GARANTIAS </b></th>
+        <td style=" border: 1px solid ;padding: 8px;">DAÑOS A COSAS</td>
+        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.danos_cosas}}</td>
+        <td style=" border: 1px solid ;padding: 8px;" rowspan="2"></td>
+        <td style=" border: 1px solid ;padding: 8px;" rowspan="2"></td>
+        <td style=" border: 1px solid ;padding: 8px;" rowspan="7">62,00</td>
+      </tr>
+      <tr>
+        <td style=" border: 1px solid ;padding: 8px;">DAÑOS A PERSONAS</td>
+        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.danos_cosas}}</td>
+      </tr>
+      <tr>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>ASESORIAS LEGALES</b></th>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+      </tr>
+      <tr>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>EXTRALIMITE</b></th>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+        <td style=" border: 1px solid ;padding: 8px;">0,00%</td>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+      </tr>
+      <tr>
+        <th style=" border: 1px solid ;padding: 8px; background-color: #eee;" rowspan="3"><b>OCUPANTE</b></th>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.danos_cosas}}</td>
+        <td style=" border: 1px solid ;padding: 8px;" rowspan="3"></td>
+        <td style=" border: 1px solid ;padding: 8px;" rowspan="3"></td>
+      </tr>
+      <tr>
+        <td style=" border: 1px solid ;padding: 8px;">INVALIDEZ</td>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+      </tr>
+      <tr>
+        <td style=" border: 1px solid ;padding: 8px;">GASTOS MÉDICOS</td>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+      </tr>
+      <tr>
+        <td style="border-left: none; border-bottom: none; border-right: none;"></td>
+        <td style="border-left: none; border-bottom: none; border-right: none;"></td>
+        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.danos_cosas * 3 }}</td>
+        <td style="border-left: none; border-bottom: none; border-right: none;"></td>
+        <td style=" border: 1px solid ;padding: 8px;"><b>SUB-TOTAL</b></td>
+        <td style=" border: 1px solid ;padding: 8px;">62,00</td>
+      </tr>
+    </table>
+    <h4 style="text-align:center; margin-top:20px; margin-bottom: 20px; font-size: 16px;">
+      <b>SERVICIOS EXTRACONTRACTUALES</b>
+    </h4>
+
+    <table
+      style="width: 100%; border-collapse: collapse; border: 2px solid #333; border-left: none; border-top: none; border-bottom: none;">
+      <tr>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"> <b> DAÑOS PARCIALES POR ACCIDENTES
+          </b></th>
+        <td style=" width:20% ;border: 1px solid ;padding: 8px;"></td>
+        <td style=" width:20% ;border: 1px solid ;padding: 8px;"></td>
+        <td style=" width:20% ;border: 1px solid ;padding: 8px;"></td>
+        <td style=" width:20% ;border: 1px solid ;padding: 8px;"></td>
+      </tr>
+      <tr>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"> <b> GRUA </b></th>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+      </tr>
+      <tr>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"> <b> ESTACIONAMIENTO </b></th>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+      </tr>
+      <tr>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"> <b>GASTOS SEMANALES </b></th>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+      </tr>
+      <tr>
+        <td style="border-left: none; border-bottom: none; border-right: none;"></td>
+        <td style="border-left: none; border-bottom: none; border-right: none;"></td>
+        <td style="border-left: none; border-bottom: none; border-right: none;"></td>
+        <td style=" border: 1px solid ;padding: 8px;"><b>SUB-TOTAL</b></td>
+        <td style=" border: 1px solid ;padding: 8px;"></td>
+      </tr>
+    </table>
+
+    <table style="width: 100%; border-collapse: collapse; border: 2px solid #333; margin-top: 20px;">
+      <tr>
+        <td align="right">
+          TOTAL POLIZA
+        </td>
+        <td align="right">62,00</td>
+      </tr>
+    </table>
+
+    <div style="display: flex; justify-content: space-around; margin-top: 60px;">
+      <div>
+        <h5>____________________________</h5>
+        <p style="margin-left: 70px;">Contratante</p>
+      </div>
+
+      <div>
+        <h5>____________________________</h5>
+        <p style="margin-left: 60px;">WORCASS C.A.</p>
+      </div>
+    </div>
+
+    <h4 style="text-align:center; font-size: 14px;">
+      OFICINA: AVENIDA INTERCOMUNAL SECTOR R:10 EDIFICIO MARBA PB LOCAL 1-A PARROQUIA LA ROSA, CABIMAS, ESTADO ZULIA
+    </h4>
+
+  </div>
 </div>

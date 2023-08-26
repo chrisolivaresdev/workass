@@ -30,6 +30,7 @@ export class UserFormcarListComponent implements OnInit {
     puestos:['', [Validators.required]],
     precio_unitario:['', [Validators.required]],
     contrato:['', [Validators.required]],
+    danos_cosas:['', [Validators.required]],
   })
 
   constructor(private fb:FormBuilder, private router:Router, private activateRoute:ActivatedRoute, private VehicleService:VehiclesService) {
@@ -77,8 +78,7 @@ export class UserFormcarListComponent implements OnInit {
         this.CarForm.controls['puestos'].setValue(car.puestos);
         this.CarForm.controls['precio_unitario'].setValue(car.precio_unitario);
         this.CarForm.controls['contrato'].setValue(car.contrato);
-
-
+        this.CarForm.controls['danos_cosas'].setValue(car.danos_cosas);
       }
     })
 

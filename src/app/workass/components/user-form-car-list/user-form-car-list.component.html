@@ -165,6 +165,18 @@
             CarForm.controls['contrato'].errors}">
           </div>
 
+          <div class="mb-2">
+            <label [ngClass]="{ 'label-invalid':
+            CarForm.controls['danos_cosas'].invalid &&
+            CarForm.controls['danos_cosas'].touched &&
+            CarForm.controls['danos_cosas'].errors}">Garantía</label>
+
+            <input type="number" class="form-control" formControlName="danos_cosas" [ngClass]="{ 'invalid':
+            CarForm.controls['danos_cosas'].invalid &&
+            CarForm.controls['danos_cosas'].touched &&
+            CarForm.controls['danos_cosas'].errors}">
+          </div>
+
 
         </div>
       </div>

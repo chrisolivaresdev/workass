@@ -1,22 +1,25 @@
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Propietario: {{vehicle.propietario.nombre_contratante}} </h5>
-      <p class="card-text"><strong>Clase:</strong> {{vehicle.clase}} </p>
-      <p class="card-text"><strong>Marca:</strong> {{vehicle.marca}} </p>
-      <p class="card-text"><strong>Modelo:</strong> {{vehicle.modelo}} </p>
-      <p class="card-text"><strong>Placa:</strong> {{vehicle.placa}} </p>
-      <p class="card-text"><strong>Serial Carroceria:</strong> {{vehicle.serialCarroceria}} </p>
-      <p class="card-text"><strong>Serial Motor: </strong>{{vehicle.serialMotor}} </p>
-      <p class="card-text"><strong>Uso:</strong> {{vehicle.uso}} </p>
-      <p class="card-text"><strong>Tipo:</strong> {{vehicle.tipo}} </p>
-      <p class="card-text"><strong>Color:</strong> {{vehicle.color}} </p>
-      <p class="card-text"><strong>Anualidad:</strong> {{vehicle.anualidad}} </p>
-      <p class="card-text"><strong>Puestos:</strong> {{vehicle.puestos}} </p>
-    </div>
-      <div class="card-icons">
-        <span class="edit-icon"><i class="fas fa-file-invoice" (click)="generatePDF()"></i></span>
-        <span class="edit-icon"><i class="fas fa-pencil-alt" (click)="editVehicle(vehicle._id)"></i></span>
-        <span class="delete-icon"><i class="fas fa-trash-alt" (click)="deleteVehicle(vehicle._id)"></i></span>
-
-      </div>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Propietario: {{vehicle.propietario.nombre_contratante}} </h5>
+    <p class="card-text"><strong>Clase:</strong> {{vehicle.clase}} </p>
+    <p class="card-text"><strong>Marca:</strong> {{vehicle.marca}} </p>
+    <p class="card-text"><strong>Modelo:</strong> {{vehicle.modelo}} </p>
+    <p class="card-text"><strong>Placa:</strong> {{vehicle.placa}} </p>
+    <p class="card-text"><strong>Serial Carroceria:</strong> {{vehicle.serialCarroceria}} </p>
+    <p class="card-text"><strong>Serial Motor: </strong>{{vehicle.serialMotor}} </p>
+    <p class="card-text"><strong>Uso:</strong> {{vehicle.uso}} </p>
+    <p class="card-text"><strong>Tipo:</strong> {{vehicle.tipo}} </p>
+    <p class="card-text"><strong>Color:</strong> {{vehicle.color}} </p>
+    <p class="card-text"><strong>Anualidad:</strong> {{vehicle.anualidad}} </p>
+    <p class="card-text"><strong>Puestos:</strong> {{vehicle.puestos}} </p>
   </div>
+  <div class="card-icons">
+    <span class="edit-icon"><i class="fas fa-file-invoice" (click)="downloadPDF()"></i></span>
+    <span class="edit-icon"><i class="fas fa-pencil-alt" (click)="editVehicle(vehicle._id)"></i></span>
+    <span class="delete-icon"><i class="fas fa-trash-alt" (click)="deleteVehicle(vehicle._id)"></i></span>
+  </div>
+</div>
+
+
+
+
