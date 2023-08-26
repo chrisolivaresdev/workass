@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/interface/user.interface';
 import Swal from 'sweetalert2'
 import { UserService } from '../../../services/user.service';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class UserFormComponent implements OnInit {
   userForm:FormGroup
 
 
-  constructor(private fb:FormBuilder, private router:Router, private activateRoute:ActivatedRoute, private UserService:UserService) {
+  constructor(private fb:FormBuilder, private router:Router, private datePipe:DatePipe, private activateRoute:ActivatedRoute, private UserService:UserService) {
     this.userForm = this.fb.group({
       numero_control: ['', [Validators.required,]],
       fecha_ingreso: ['', [Validators.required]],
@@ -56,6 +57,7 @@ export class UserFormComponent implements OnInit {
       const user = resp
       if(user){
         this.userForm.controls['fecha_ingreso'].setValue(user.fecha_ingreso);
+        this.userForm.controls['fecha_vencimiento'].setValue(user.fecha_vencimiento);
         this.userForm.controls['nombre_contratante'].setValue(user.nombre_contratante);
         this.userForm.controls['cedula_contratante'].setValue(user.cedula_contratante);
         this.userForm.controls['telefono_contratante'].setValue(user.telefono_contratante);
@@ -63,7 +65,6 @@ export class UserFormComponent implements OnInit {
         this.userForm.controls['nombre_beneficiario'].setValue(user.nombre_beneficiario);
         this.userForm.controls['cedula_beneficiario'].setValue(user.cedula_beneficiario);
         this.userForm.controls['promotor'].setValue(user.promotor);
-        this.userForm.controls['fecha_vencimiento'].setValue(user.fecha_vencimiento);
         this.userForm.controls['numero_control'].setValue(user.numero_control);
         this.userForm.controls['numero_factura'].setValue(user.numero_factura);
       }
