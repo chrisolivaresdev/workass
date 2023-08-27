@@ -93,33 +93,33 @@ export class UsercarListComponent implements OnInit {
   }
 
   downloadPDF(e:any) {
-    // this.vehicle = e
+    this.vehicle = e
 
-    // setTimeout(() => {
+    setTimeout(() => {
 
-    //   const data = e
-    // const DATA:any = document.getElementById('contrato');
-    // const doc = new jsPDF('p', 'px', 'a4');
-    // const options = {
-    //   background: 'white',
-    //   scale: 3
-    // };
-    // html2canvas(DATA, options).then((canvas) => {
+      const data = e
+    const DATA:any = document.getElementById('contrato');
+    const doc = new jsPDF('p', 'px', 'a4');
+    const options = {
+      background: 'white',
+      scale: 3
+    };
+    html2canvas(DATA, options).then((canvas) => {
 
-    //   const img = canvas.toDataURL('image/PNG');
+      const img = canvas.toDataURL('image/PNG');
 
-    //   // Add image Canvas to PDF
-    //   const bufferX = 15;
-    //   const bufferY = 15;
-    //   const imgProps = (doc as any).getImageProperties(img);
-    //   const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
-    //   const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-    //   doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
-    //   return doc;
-    // }).then((docResult) => {
-    //   docResult.save(`Contrato-${data.propietario.nombre_contratante}.pdf`);
-    // });
-    // }, 5000)
+      // Add image Canvas to PDF
+      const bufferX = 15;
+      const bufferY = 15;
+      const imgProps = (doc as any).getImageProperties(img);
+      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+      return doc;
+    }).then((docResult) => {
+      docResult.save(`Contrato-${data.propietario.nombre_contratante}.pdf`);
+    });
+    }, 5000)
 
     this.generatePDF(e)
   }
