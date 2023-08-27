@@ -9,7 +9,7 @@ import Swal from 'sweetalert2'
 export class CardEmployeesComponent implements OnInit {
   @Input() employee!:any
   @Output() deleteEmployee =  new EventEmitter<number>()
-
+  role = localStorage.getItem('role')
 
   constructor() { }
 
