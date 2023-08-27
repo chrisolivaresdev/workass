@@ -93,33 +93,33 @@ export class UsercarListComponent implements OnInit {
   }
 
   downloadPDF(e:any) {
-    this.vehicle = e
+    // this.vehicle = e
 
-    setTimeout(() => {
+    // setTimeout(() => {
 
-      const data = e
-    const DATA:any = document.getElementById('contrato');
-    const doc = new jsPDF('p', 'px', 'a4');
-    const options = {
-      background: 'white',
-      scale: 3
-    };
-    html2canvas(DATA, options).then((canvas) => {
+    //   const data = e
+    // const DATA:any = document.getElementById('contrato');
+    // const doc = new jsPDF('p', 'px', 'a4');
+    // const options = {
+    //   background: 'white',
+    //   scale: 3
+    // };
+    // html2canvas(DATA, options).then((canvas) => {
 
-      const img = canvas.toDataURL('image/PNG');
+    //   const img = canvas.toDataURL('image/PNG');
 
-      // Add image Canvas to PDF
-      const bufferX = 15;
-      const bufferY = 15;
-      const imgProps = (doc as any).getImageProperties(img);
-      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
-      return doc;
-    }).then((docResult) => {
-      docResult.save(`Contrato-${data.propietario.nombre_contratante}.pdf`);
-    });
-    }, 5000)
+    //   // Add image Canvas to PDF
+    //   const bufferX = 15;
+    //   const bufferY = 15;
+    //   const imgProps = (doc as any).getImageProperties(img);
+    //   const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+    //   const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+    //   doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+    //   return doc;
+    // }).then((docResult) => {
+    //   docResult.save(`Contrato-${data.propietario.nombre_contratante}.pdf`);
+    // });
+    // }, 5000)
 
     this.generatePDF(e)
   }
@@ -229,40 +229,62 @@ export class UsercarListComponent implements OnInit {
     doc.text(`${data.precio_unitario +  data.precio_unitario * 0.16}`, 180, 168);
 
 
-    doc.setFontSize(10);
+    doc.setFontSize(9);
     doc.setFont('arial','bold')
-    doc.text(`CERTIFICADO DE DATOS DE RCV`, 45, 230);
+    doc.text(`CERTIFICADO DE DATOS DE RCV`, 45, 238);
     doc.setFont('arial','normal')
-    doc.setFontSize(8);
-    doc.text(`Nª FACTURA: ${data.propietario.numero_factura}`, 20, 235);
-    doc.text(`Nª CONTROL: ${data.contrato}`, 50, 235);
-    doc.text(`CONTRATANTE: ${data.propietario.nombre_contratante.toUpperCase()}`, 20, 240);
-    doc.text(`RIF / C.I.: ${data.propietario.cedula_contratante}`, 20, 245);
-    doc.setFontSize(10);
+    doc.setFontSize(7);
+    doc.text(`Nª FACTURA`, 25, 241);
+    doc.text(`:  ${data.propietario.numero_factura}`, 41, 241);
+
+    doc.text(`Nª CONTROL`, 62, 241);
+    doc.text(`:  ${data.contrato}`, 78, 241);
+    doc.text(`CONTRATANTE `, 21, 244);
+    doc.text(`:  ${data.propietario.nombre_contratante.toUpperCase()}`, 41, 244);
+
+    doc.text(`RIF / C.I.`, 31, 247);
+    doc.text(`:  ${data.propietario.cedula_contratante}`, 41, 247);
+
+    doc.setFontSize(8 );
     doc.text(`DESCIPCIÓN DEL VEHICULO`, 25, 250);
-    doc.setFontSize(8);
-    doc.text(`PLACA: ${data.placa.toUpperCase()}`, 20, 255);
-    doc.text(`MARCA: ${data.marca.toUpperCase()}`, 20, 260);
-    doc.text(`TIPO: ${data.tipo.toUpperCase()}`, 20, 265);
-    doc.text(`MODELO: ${data.modelo.toUpperCase()}`, 20, 270);
-    doc.text(`CLASE: ${data.clase.toUpperCase()}`, 50, 255);
-    doc.text(`AÑO:  ${this.datePipe.transform(data.propietario.fecha_ingreso, 'yyyy', 'UTC')} / ${this.datePipe.transform(data.propietario.fecha_vencimiento, 'yyyy', 'UTC')}`, 50, 260);
-    doc.text(`S.CARROCERÍA: ${data.serialCarroceria.toUpperCase()}`, 50, 265);
-    doc.text(`COLOR: ${data.color.toUpperCase()}`, 50, 270);
+    doc.setFontSize(7);
+    doc.text(`PLACA`, 32, 253);
+    doc.text(`:  ${data.placa.toUpperCase()}`, 41, 253);
+
+    doc.text(`MARCA`, 31, 256);
+    doc.text(`:  ${data.marca.toUpperCase()}`, 41, 256);
+
+    doc.text(`TIPO`, 35, 259);
+    doc.text(`:  ${data.tipo.toUpperCase()}`, 41, 259);
+
+    doc.text(`MODELO`, 30, 262);
+    doc.text(`:  ${data.modelo.toUpperCase()}`, 41, 262);
+
+    doc.text(`CLASE`, 33, 265);
+    doc.text(`:  ${data.clase.toUpperCase()}`, 41, 265);
+
+    doc.text(`AÑO`, 35, 268);
+    doc.text(`:  ${this.datePipe.transform(data.propietario.fecha_ingreso, 'yyyy', 'UTC')} / ${this.datePipe.transform(data.propietario.fecha_vencimiento, 'yyyy', 'UTC')}`, 41, 268);
+    doc.text(`S.CARROCERÍA`, 22, 271);
+    doc.text(`:  ${data.serialCarroceria.toUpperCase()}`, 41, 271);
+
+    doc.text(`COLOR`, 32, 274);
+    doc.text(`:  ${data.color.toUpperCase()}`, 41, 274);
+
     doc.setFontSize(8);
          // @ts-ignore
-         doc.addImage(qrDataUri, 'PNG', 115, 230, 20, 20);
+         doc.addImage(qrDataUri, 'PNG', 115, 235, 20, 20);
     doc.setFont('arial','bold')
     doc.text(`F. EMISIÓN: ${this.datePipe.transform(data.propietario.fecha_ingreso, 'dd/MM/yyyy', 'UTC')}`, 140, 240);
     doc.text(`F. VENCIMIENTO: ${this.datePipe.transform(data.propietario.fecha_vencimiento, 'dd/MM/yyyy', 'UTC')}`, 140, 245);
     doc.setFont('arial','normal')
     doc.setFontSize(8);
 
-    doc.text(`SE AGRADECE A LAS AUTORIDADES BRINDAR APOYO`, 125, 255);
-    doc.text(`AL PORTADOR DE ESTE CARNET`, 140, 260);
+    doc.text(`SE AGRADECE A LAS AUTORIDADES BRINDAR APOYO`, 125, 260);
+    doc.text(`AL PORTADOR DE ESTE CARNET`, 140, 265);
     doc.setFontSize(6);
-    doc.text(`OFICINA: AVENINIDA INTERCOMUNAL. SECTOR 4:10 EDIFICIO MARBA PB`, 120, 265);
-    doc.text(`LOCAL, 1-A PARROQUIA LA ROSA, CABIMAS, ESTADO ZULIA`, 125, 268);
+    doc.text(`OFICINA: AVENINIDA INTERCOMUNAL. SECTOR 4:10 EDIFICIO MARBA PB`, 120, 270);
+    doc.text(`LOCAL, 1-A PARROQUIA LA ROSA, CABIMAS, ESTADO ZULIA`, 125, 273);
 
      doc.save(`factura-${data.propietario.nombre_contratante}.pdf`);
   }
