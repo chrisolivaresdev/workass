@@ -88,14 +88,14 @@ export class UserListComponent implements OnInit {
     this.UserService.deleteUsers(id).subscribe( resp => {
       Swal.fire({
         icon: 'success',
-        title: "Bien!!",
+        title: "¡Bien!",
         text: "Usuario eliminado correctamente"
       })
       this.ngOnInit()
     }, (err) => {
       Swal.fire({
     icon: 'warning',
-    title: "Upps!!",
+    title: "Ha ocurrido un error",
     text: err.error.message
   })
     })

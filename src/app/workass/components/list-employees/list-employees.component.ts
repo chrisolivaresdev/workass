@@ -33,14 +33,14 @@ export class ListEmployeesComponent implements OnInit {
     this.EmployeesService.deleteEmployee(id).subscribe( resp => {
       Swal.fire({
         icon: 'success',
-        title: "Bien!!",
+        title: "¡Bien!",
         text: "empleado eliminado correctamente"
       })
       this.ngOnInit()
     }, (err) => {
       Swal.fire({
     icon: 'warning',
-    title: "Upps!!",
+    title: "Ha ocurrido un error",
     text: err.error.message
   })
     })

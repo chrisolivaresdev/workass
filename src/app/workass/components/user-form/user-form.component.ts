@@ -81,14 +81,14 @@ export class UserFormComponent implements OnInit {
       this.UserService.putUsers(this.id, this.userForm.value).subscribe(resp => {
         Swal.fire({
           icon: 'success',
-          title: "Bien!!",
+          title: "¡Bien!",
           text: "Usuario editado correctamente"
         })
         this.router.navigate(['/Usuarios'])
       }, (err) => {
          Swal.fire({
           icon: 'warning',
-          title: "Upps!!",
+          title: "Ha ocurrido un error",
           text: err.error.message
         })
       })
@@ -99,7 +99,7 @@ export class UserFormComponent implements OnInit {
       this.UserService.postUsers(this.userForm.value).subscribe(resp => {
         Swal.fire({
           icon: 'success',
-          title: "Bien!!",
+          title: "¡Bien!",
           text: "Usuario creado correctamente"
         })
         this.userForm.reset()
@@ -108,7 +108,7 @@ export class UserFormComponent implements OnInit {
       console.log(err)
          Swal.fire({
           icon: 'warning',
-          title: "Upps!!",
+          title: "Ha ocurrido un error",
           text: err.error.message
         })
       })

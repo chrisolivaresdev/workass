@@ -67,14 +67,14 @@ export class UsercarListComponent implements OnInit {
     this.VehicleService.deleteVehicles(id).subscribe( resp => {
       Swal.fire({
         icon: 'success',
-        title: "Bien!!",
+        title: "¡Bien!",
         text: "Vehiculo eliminado correctamente"
       })
       this.ngOnInit()
     }, (err) => {
       Swal.fire({
     icon: 'warning',
-    title: "Upps!!",
+    title: "Ha ocurrido un error",
     text: err.error.message
   })
     })

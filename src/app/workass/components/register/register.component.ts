@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
       }, 500)
 
     },(err)=> {
-     return Swal.fire('Error', err, 'warning')
+     return Swal.fire('Error', err.error.message, 'warning')
     }
     )
 

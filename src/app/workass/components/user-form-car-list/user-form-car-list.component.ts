@@ -94,14 +94,14 @@ export class UserFormcarListComponent implements OnInit {
     this.VehicleService.putVehicles(this.idCar, this.CarForm.value).subscribe(resp => {
       Swal.fire({
         icon: 'success',
-        title: "Bien!!",
+        title: "¡Bien!",
         text: "Editado correctamente"
       })
       this.router.navigate([`${this.id}/carList`])
     }, (err) => {
       Swal.fire({
     icon: 'warning',
-    title: "Upps!!",
+    title: "Ha ocurrido un error",
     text: err.error.message
   })
     })
@@ -110,7 +110,7 @@ export class UserFormcarListComponent implements OnInit {
         this.CarForm.reset()
         Swal.fire({
           icon: 'success',
-          title: "Bien!!",
+          title: "¡Bien!",
           text: "Usuario creado correctamente"
         })
         this.router.navigate([`${this.id}/carList`])
@@ -118,7 +118,7 @@ export class UserFormcarListComponent implements OnInit {
         console.log(err.message)
         Swal.fire({
           icon: 'warning',
-          title: "Upps!!",
+          title: "Ha ocurrido un error",
           text: err.error.message
         })
       }
