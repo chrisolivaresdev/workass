@@ -36,8 +36,7 @@ export class LoginComponent implements OnInit {
       }, 500)
 
     },(err)=> {
-      console.log(err.error.message)
-     return Swal.fire('Error', err, 'warning')
+     return Swal.fire('Error', err.error.message[0], 'warning')
     } )
     }
   }
