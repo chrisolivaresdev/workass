@@ -25,9 +25,12 @@
   </button>
 </div>
 
-
 <div id="contrato" style="position: absolute; left: -9999px; padding: 20px 20px;">
-  <div style="height:130px">
+  <div style="text-align:center; margin-bottom: 60px;">
+          <img src="../../../../assets/img/logo.jpeg" alt="logo-workass" style=" position: absolute; left:0; top:- ;width: 300px; height: 120px">
+          <p style="font-size: 18px; font-weight: bold; padding-top: 35px;">WORLD CAR ASSISTEM C.A.</p>
+          <p style="font-size: 16px; font-weight: bold;">CONTRATO DE GARANTIA DE RESPONSABILIDAD CIVIL</p>
+          <p style="font-size: 16px; font-weight: bold; margin-top: -20px;">SOBRE DAÑOS POR VEHICULOS A TERCEROS</p>
   </div>
   <div>
     <table style="width: 100%; border-collapse: collapse; border: 2px solid #333; margin-top: 30px;">
@@ -79,45 +82,45 @@
       </tr>
     </table>
 
-    <h4 style="text-align:center; margin-top:20px; margin-bottom: 20px; font-size: 16px;"><b>DATOS DEL VEHICULO</b>
+    <h4 style="text-align:center; margin-top:40px; margin-bottom: 40px; font-size: 16px;"><b>DATOS DEL VEHICULO</b>
     </h4>
 
     <table
       style="width: 100%; border-collapse: collapse; border: 2px solid #333; border-bottom: none; border-right: none;">
       <tr>
-        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>MARCA</b></th>
-        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.marca}}</td>
-        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>MODELO</b></th>
-        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.modelo}}</td>
-        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>CLASE</b></th>
-        <td style=" border: 1px solid ;padding: 8px;"><b>{{vehicle?.clase}}</b></td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:16%;"><b>MARCA</b></th>
+        <td style=" border: 1px solid ;padding: 8px; width:16%;">{{vehicle?.marca}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:16%;"><b>MODELO</b></th>
+        <td style=" border: 1px solid ;padding: 8px; width:16%;">{{vehicle?.modelo}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:16%;"><b>CLASE</b></th>
+        <td style=" border: 1px solid ;padding: 8px; width:16%;"><b>{{vehicle?.clase}}</b></td>
       </tr>
       <tr>
-        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>SERIAL MOTOR</b></th>
-        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.serialMotor}}</td>
-        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>SERIAL CARROCERÍA</b></th>
-        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.serialCarroceria}}</td>
-        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>N° DE PLACA</b></th>
-        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.placa}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:16%;"><b>SERIAL MOTOR</b></th>
+        <td style=" border: 1px solid ;padding: 8px; width:16%;">{{vehicle?.serialMotor}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:16%;"><b>SERIAL CARROCERÍA</b></th>
+        <td style=" border: 1px solid ;padding: 8px; width:16%;">{{vehicle?.serialCarroceria}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:16%;"><b>N° DE PLACA</b></th>
+        <td style=" border: 1px solid ;padding: 8px; width:16%;">{{vehicle?.placa}}</td>
       </tr>
       <tr>
-        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>USO</b></th>
-        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.uso}}</td>
-        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>TIPO</b></th>
-        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.tipo}}</td>
-        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>COLOR</b></th>
-        <td style=" border: 1px solid ;padding: 8px;">{{vehicle?.color}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:16%;"><b>USO</b></th>
+        <td style=" border: 1px solid ;padding: 8px; width:16%;">{{vehicle?.uso}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:16%;"><b>TIPO</b></th>
+        <td style=" border: 1px solid ;padding: 8px; width:16%;">{{vehicle?.tipo}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:16%;"><b>COLOR</b></th>
+        <td style=" border: 1px solid ;padding: 8px; width:16%;">{{vehicle?.color}}</td>
       </tr>
       <tr>
-        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;">AÑO</th>
-        <td style=" border: 1px solid ;padding: 8px;">{{this.datePipe.transform(vehicle?.propietario.fecha_ingreso, 'yyyy', 'UTC')}} / {{this.datePipe.transform(vehicle?.propietario.fecha_vencimiento, 'yyyy', 'UTC')}}</td>
-        <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>PUESTOS</b></th>
-        <td style="width: 20px !important; border: 1px solid ;padding: 8px;">{{vehicle?.puestos}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:16%">AÑO</th>
+        <td style=" border: 1px solid ;padding: 8px; width:16%">{{this.datePipe.transform(vehicle?.propietario.fecha_ingreso, 'yyyy', 'UTC')}} / {{this.datePipe.transform(vehicle?.propietario.fecha_vencimiento, 'yyyy', 'UTC')}}</td>
+        <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:16%"><b>PUESTOS</b></th>
+        <td style="width: 20px !important; border: 1px solid ;padding: 8px; width:16%">{{vehicle?.puestos}}</td>
       </tr>
     </table>
 
 
-    <h4 style="text-align:center; margin-top:20px; margin-bottom: 20px; font-size: 16px;"><b>GARANTIAS</b></h4>
+    <h4 style="text-align:center; margin-top:40px; margin-bottom: 40px; font-size: 16px;"><b>GARANTIAS</b></h4>
 
     <table
       style="width: 100%; border-collapse: collapse; border: 2px solid #333; border-left: none; border-top: none; border-bottom: none;">
@@ -237,7 +240,7 @@
     <div style="display: flex; justify-content: space-around; margin-top: 60px;">
       <div>
         <h5>____________________________</h5>
-        <p style="margin-left: 70px;">Contratante</p>
+        <p style="margin-left: 70px;">CONTRATANTE</p>
       </div>
 
       <div>
