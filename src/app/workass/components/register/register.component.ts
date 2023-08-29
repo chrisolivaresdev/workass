@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
   CrearEmpleado() {
     this.AuthService.register(this.registerForm.value).subscribe( resp => {
       Swal.fire(
-        'Felicidades!',
+        '¡Felicidades!',
         'Ha sido registrado correctamente',
         'success'
       )

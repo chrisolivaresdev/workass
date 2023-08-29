@@ -13,7 +13,6 @@ export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
 
-
   constructor( private _formBuilder: FormBuilder, private router:Router, private AuthService:AuthService) { }
 
   ngOnInit(): void {
@@ -27,7 +26,7 @@ export class LoginComponent implements OnInit {
   login(){
     this.AuthService.Login(this.loginForm.value).subscribe(resp => {
       Swal.fire(
-        'Felicidades!',
+        '¡Felicidades!',
         'Has iniciado sesión correctamente',
         'success'
       )
