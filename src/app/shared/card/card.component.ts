@@ -27,8 +27,8 @@ export class CardComponent implements OnInit {
 
   deleteUser(id:any){
     Swal.fire({
-      title: "Estas seguro",
-      text: "Quieres eliminar el usuario",
+      title: "¿Estás seguro?",
+      text: "¿Quieres eliminar el usuario?",
       icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

@@ -99,7 +99,7 @@ export class UsercarListComponent implements OnInit {
 
       const data = e
     const DATA:any = document.getElementById('contrato');
-    const doc = new jsPDF('p', 'px', 'a4');
+    const doc = new jsPDF('p', 'px', 'letter');
     const options = {
       background: 'white',
       scale: 3

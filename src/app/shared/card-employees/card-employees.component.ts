@@ -18,8 +18,8 @@ export class CardEmployeesComponent implements OnInit {
 
   deleteEmployes(id:any){
     Swal.fire({
-      title: "Estas seguro",
-      text: "Quieres eliminar el empleado",
+      title: "¿Estás seguro?",
+      text: "¿Quieres eliminar el empleado?",
       icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
