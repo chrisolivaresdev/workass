@@ -16,18 +16,18 @@
 }
 
 .card-body {
-  text-align: center;
+  text-align: justify;
   padding: 15px;
 }
 
 .card-title {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 14px;
   margin-bottom: 5px;
 }
 
 .card-text {
   margin-bottom: 5px;
+  font-size: 14px;
 }
 
 .card-link {
@@ -73,5 +73,4 @@ img{
   width: 200px;
   height: 200px;
 }
-
 
