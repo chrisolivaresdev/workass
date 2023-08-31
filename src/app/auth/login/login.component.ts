@@ -35,7 +35,13 @@ export class LoginComponent implements OnInit {
       }, 500)
 
     },(err)=> {
-     return Swal.fire('Error', err.error.message[0], 'warning')
+
+     if(Array.isArray(err.error.message)) {
+       return Swal.fire('Error', err.error.message[0], 'warning')
+     }
+
+     return Swal.fire('Error', err.error.message, 'warning')
+
     } )
     }
   }

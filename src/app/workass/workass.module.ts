@@ -28,6 +28,6 @@ import { UserFormcarListComponent } from './components/user-form-car-list/user-f
     SharedModule,
     ReactiveFormsModule,
     FormsModule
-  ]
+  ],
 })
 export class WorkassModule { }

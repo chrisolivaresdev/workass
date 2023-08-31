@@ -27,3 +27,7 @@ button:active {
   margin-left: 20px;
   cursor: pointer;
 }
+
+td, th{
+  font-size: 14px;
+}
