@@ -236,12 +236,12 @@ export class UsercarListComponent implements OnInit {
     doc.setFontSize(10);
     doc.text('EXENTO',160, 150);
     doc.text(`SUBTOTAL:`,160,155);
-    doc.text(`${data.precio_unitario}`, 180,155);
+    doc.text(`${data.precio_unitario.toFixed(2).replace('.', ',')}`, 180,155);
     doc.text(`IVA(16%): `, 160, 160);
-    doc.text(`${(data.precio_unitario * 0.16).toFixed(2)}`, 180, 160);
+    doc.text(`${(data.precio_unitario * 0.16).toFixed(2).replace('.', ',')}`, 180, 160);
     doc.setFontSize(12);
     doc.text(`TOTAL:`, 160, 168);
-    doc.text(`${(data.precio_unitario +  data.precio_unitario * 0.16).toFixed(2)}`, 180, 168);
+    doc.text(`${(data.precio_unitario +  data.precio_unitario * 0.16).toFixed(2).replace('.', ',')}`, 180, 168);
 
 
     doc.setFontSize(9);
