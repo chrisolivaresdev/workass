@@ -8,7 +8,7 @@ function createWindow() {
   win = new BrowserWindow({
     width: 800,
     height: 600,
-    zoomFactor: 1.2,
+    zoomFactor: 1.4,
     webPreferences: {
       nodeIntegration: true,
     },
