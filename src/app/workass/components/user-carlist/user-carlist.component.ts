@@ -246,61 +246,61 @@ export class UsercarListComponent implements OnInit {
 
     doc.setFontSize(9);
     doc.setFont('arial','bold')
-    doc.text(`CERTIFICADO DE DATOS DE RCV`, 45, 228);
+    doc.text(`CERTIFICADO DE DATOS DE RCV`, 45, 200);
     doc.setFont('arial','normal')
     doc.setFontSize(7);
-    doc.text(`Nª FACTURA`, 25, 231);
-    doc.text(`:  ${data.propietario.numero_factura}`, 41, 231);
+    doc.text(`Nª FACTURA`, 25, 203);
+    doc.text(`:  ${data.propietario.numero_factura}`, 41, 203);
 
-    doc.text(`Nª CONTROL`, 62, 231);
-    doc.text(`:  ${data.contrato}`, 78, 231);
-    doc.text(`CONTRATANTE `, 21, 234);
-    doc.text(`:  ${data.propietario.nombre_contratante.toUpperCase()}`, 41, 234);
+    doc.text(`Nª CONTROL`, 62, 203);
+    doc.text(`:  ${data.contrato}`, 78, 203);
+    doc.text(`CONTRATANTE `, 21, 206);
+    doc.text(`:  ${data.propietario.nombre_contratante.toUpperCase()}`, 41, 206);
 
-    doc.text(`RIF / C.I.`, 31, 237);
-    doc.text(`:  ${data.propietario.cedula_contratante}`, 41, 237);
+    doc.text(`RIF / C.I.`, 31, 209);
+    doc.text(`:  ${data.propietario.cedula_contratante}`, 41, 209);
 
     doc.setFontSize(8 );
-    doc.text(`DESCIPCIÓN DEL VEHICULO`, 25, 240);
+    doc.text(`DESCIPCIÓN DEL VEHICULO`, 25, 212);
     doc.setFontSize(7);
-    doc.text(`PLACA`, 32, 243);
-    doc.text(`:  ${data.placa.toUpperCase()}`, 41, 243);
+    doc.text(`PLACA`, 32, 215);
+    doc.text(`:  ${data.placa.toUpperCase()}`, 41, 215);
 
-    doc.text(`MARCA`, 31, 246);
-    doc.text(`:  ${data.marca.toUpperCase()}`, 41, 246);
+    doc.text(`MARCA`, 31, 218);
+    doc.text(`:  ${data.marca.toUpperCase()}`, 41, 218);
 
-    doc.text(`TIPO`, 35, 249);
-    doc.text(`:  ${data.tipo.toUpperCase()}`, 41, 249);
+    doc.text(`TIPO`, 35, 221);
+    doc.text(`:  ${data.tipo.toUpperCase()}`, 41, 221);
 
-    doc.text(`MODELO`, 30, 252);
-    doc.text(`:  ${data.modelo.toUpperCase()}`, 41, 252);
+    doc.text(`MODELO`, 30, 224);
+    doc.text(`:  ${data.modelo.toUpperCase()}`, 41, 224);
 
-    doc.text(`CLASE`, 33, 255);
-    doc.text(`:  ${data.clase.toUpperCase()}`, 41, 255);
+    doc.text(`CLASE`, 33, 227);
+    doc.text(`:  ${data.clase.toUpperCase()}`, 41, 227);
 
-    doc.text(`AÑO`, 35, 258);
-    doc.text(`:  ${this.datePipe.transform(data.propietario.fecha_ingreso, 'yyyy', 'UTC')} / ${this.datePipe.transform(data.propietario.fecha_vencimiento, 'yyyy', 'UTC')}`, 41, 258);
-    doc.text(`S.CARROCERÍA`, 22, 261);
-    doc.text(`:  ${data.serialCarroceria.toUpperCase()}`, 41, 261);
+    doc.text(`AÑO`, 35, 230);
+    doc.text(`:  ${this.datePipe.transform(data.propietario.fecha_ingreso, 'yyyy', 'UTC')} / ${this.datePipe.transform(data.propietario.fecha_vencimiento, 'yyyy', 'UTC')}`, 41, 230);
+    doc.text(`S.CARROCERÍA`, 22, 233);
+    doc.text(`:  ${data.serialCarroceria.toUpperCase()}`, 41, 233);
 
-    doc.text(`COLOR`, 32, 264);
-    doc.text(`:  ${data.color.toUpperCase()}`, 41, 264);
+    doc.text(`COLOR`, 32, 236);
+    doc.text(`:  ${data.color.toUpperCase()}`, 41, 236);
 
     doc.setFontSize(8);
          // @ts-ignore
-         doc.addImage(qrDataUri, 'PNG', 115, 225, 25, 25);
+         doc.addImage(qrDataUri, 'PNG', 115, 195, 25, 25);
     doc.setFont('arial','bold')
-    doc.text(`F. EMISIÓN: ${this.datePipe.transform(data.propietario.fecha_ingreso, 'dd/MM/yyyy', 'UTC')}`, 145, 235);
-    doc.text(`F. VENCIMIENTO: ${this.datePipe.transform(data.propietario.fecha_vencimiento, 'dd/MM/yyyy', 'UTC')}`, 145, 240);
+    doc.text(`F. EMISIÓN: ${this.datePipe.transform(data.propietario.fecha_ingreso, 'dd/MM/yyyy', 'UTC')}`, 145, 205);
+    doc.text(`F. VENCIMIENTO: ${this.datePipe.transform(data.propietario.fecha_vencimiento, 'dd/MM/yyyy', 'UTC')}`, 145, 210);
 
     doc.setFontSize(8);
 
-    doc.text(`Se agradece a las autoridades brondar apoyo`, 130, 255);
-    doc.text(`al portador de este carnet`, 143, 260);
+    doc.text(`Se agradece a las autoridades brondar apoyo`, 130, 225);
+    doc.text(`al portador de este carnet`, 143, 230);
     doc.setFontSize(6);
     doc.setFont('arial','bold')
-    doc.text(`OFICINA: AVENIDA INTERCOMUNAL. SECTOR 4:10 EDIFICIO MARBA PB`, 120, 265);
-    doc.text(`LOCAL, 1-A PARROQUIA LA ROSA, CABIMAS, ESTADO ZULIA`, 125, 270);
+    doc.text(`OFICINA: AVENIDA INTERCOMUNAL. SECTOR 4:10 EDIFICIO MARBA PB`, 120, 235);
+    doc.text(`LOCAL, 1-A PARROQUIA LA ROSA, CABIMAS, ESTADO ZULIA`, 125, 240);
 
      doc.save(`factura-${data.propietario.nombre_contratante}.pdf`);
   }
