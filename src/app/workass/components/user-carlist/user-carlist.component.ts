@@ -130,31 +130,40 @@ export class UsercarListComponent implements OnInit {
     const data = dataVehicle
     data.precio_unitario = 10
        // Generar un código QR
-     const qrData = `
-    Anualidad: ${data.anualidad}
-    Clase: ${data.clase}
-    Color:  ${data.color}
-    Marca:  ${data.marca}
-    Modelo:  ${data.modelo}
-    Placa:  ${data.placa}
-    Puestos:  ${data.puestos}
-    Serial de la carroceria:  ${data.serialCarroceria}
-    Serial de motor:  ${data.serialMotor}
-    tipo:  ${data.tipo}
-    uso:  ${data.uso}
-    numero de contrato: ${data.contrato}
-    Propietario:
-    Cedula del beneficiario: ${data.propietario.cedula_beneficiario}
+
+       //  const qrData = `
+    // Clase: ${data.clase}
+    // Color:  ${data.color}
+    // Marca:  ${data.marca}
+    // Modelo:  ${data.modelo}
+    // Placa:  ${data.placa}
+    // Puestos:  ${data.puestos}
+    // Serial de la carroceria:  ${data.serialCarroceria}
+    // Serial de motor:  ${data.serialMotor}
+    // tipo:  ${data.tipo}
+    // uso:  ${data.uso}
+    // numero de contrato: ${data.contrato}
+    // Propietario:
+    // Nombre del contratante: ${data.propietario.nombre_contratante}
+    // Cedula del contratante: ${data.propietario.cedula_contratante}
+    // Cedula del beneficiario: ${data.propietario.cedula_beneficiario}
+    // Direccion del contratante: ${data.propietario.direccion_contratante}
+    // Fecha de ingreso: ${this.datePipe.transform(data.propietario.fecha_ingreso, 'dd/MM/yyyy', 'UTC')},
+    // Fecha de vencimiento: ${this.datePipe.transform(data.propietario.fecha_vencimiento, 'dd/MM/yyyy', 'UTC')},
+    // Nombre del beneficiario: ${data.propietario.nombre_beneficiario}
+    // Numero de control: ${data.propietario.numero_control}
+    // Numero de factura: ${data.propietario.numero_factura}
+    // Promotor: ${data.propietario.promotor}
+    // Telefono del contratante: ${data.propietario.telefono_contratante}`
+
+
+    const qrData = `
+    Nombre del contratante: ${data.propietario.nombre_contratante}
     Cedula del contratante: ${data.propietario.cedula_contratante}
     Direccion del contratante: ${data.propietario.direccion_contratante}
     Fecha de ingreso: ${this.datePipe.transform(data.propietario.fecha_ingreso, 'dd/MM/yyyy', 'UTC')},
     Fecha de vencimiento: ${this.datePipe.transform(data.propietario.fecha_vencimiento, 'dd/MM/yyyy', 'UTC')},
-    Nombre del contratante: ${data.propietario.nombre_contratante}
-    Nombre del beneficiario: ${data.propietario.nombre_beneficiario}
-    Numero de control: ${data.propietario.numero_control}
-    Numero de factura: ${data.propietario.numero_factura}
-    Promotor: ${data.propietario.promotor}
-    Telefono del contratante: ${data.propietario.telefono_contratante}`
+    `
 
      const qrCanvas = await QRCode.toCanvas(qrData);
 
