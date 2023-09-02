@@ -160,7 +160,6 @@ export class UsercarListComponent implements OnInit {
     const qrData = `
     Nombre del contratante: ${data.propietario.nombre_contratante}
     Cedula del contratante: ${data.propietario.cedula_contratante}
-    Direccion del contratante: ${data.propietario.direccion_contratante}
     Fecha de ingreso: ${this.datePipe.transform(data.propietario.fecha_ingreso, 'dd/MM/yyyy', 'UTC')},
     Fecha de vencimiento: ${this.datePipe.transform(data.propietario.fecha_vencimiento, 'dd/MM/yyyy', 'UTC')},
     `
