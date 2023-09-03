@@ -1,4 +1,6 @@
-import { Component, HostListener} from '@angular/core';
+import { Component, HostListener, Inject} from '@angular/core';
+import { IpcRenderer } from 'electron';
+
 
 @Component({
   selector: 'app-root',
