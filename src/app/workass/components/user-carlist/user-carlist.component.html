@@ -3,19 +3,19 @@
 <app-spinner *ngIf="!vehicles">
 </app-spinner>
 
-<div class="container p-2 d-flex justify-content-end animate__animated animate__fadeInLeft" *ngIf="vehicles">
+<div class="container p-2 d-flex justify-content-end animate_animated animate_fadeInLeft" *ngIf="vehicles">
   <button (click)="CrearVehicle()">
     Crear
   </button>
 </div>
 
-<div class="container p-3 d-flex justify-content-center gap-3 flex-wrap animate__animated animate__fadeInLeft" *ngIf="vehicles">
+<div class="container p-3 d-flex justify-content-center gap-3 flex-wrap animate_animated animate_fadeInLeft" *ngIf="vehicles">
   <ng-container *ngFor="let vehicle of vehicles">
     <app-card-cars [vehicle]="vehicle" (imprimir)="downloadPDF($event)" (editVehicleById)="editVehicleById($event)" (DeletecarById)="DeleteCarById($event)"></app-card-cars>
   </ng-container>
 </div>
 
-<div class="container p-3 d-flex justify-content-center gap-3 animate__animated animate__fadeInLeft" *ngIf="vehicles">
+<div class="container p-3 d-flex justify-content-center gap-3 animate_animated animate_fadeInLeft" *ngIf="vehicles">
   <button (click)="paginaAnterior()" [disabled]="paginaActual === 1">
     Pagina anterior
   </button>
@@ -51,34 +51,34 @@
       <table style="width: 100%; border-collapse: collapse; border: 2px solid #333;">
         <tr>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px;width: 18%;"><b>N° DE CONTRATO</b></th>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold; width: 23% ;">{{vehicle?.contrato}}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold; width: 23% ;">{{(vehicle?.contrato).toUpperCase()}}</td>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width: 13%;"><b>N° DE FACTURA</b></th>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold;width: 23%">{{vehicle?.propietario.numero_factura}}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold;width: 23%">{{vehicle?.propietario.numero_factura}}</td>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width: 15%"><b>N° DE CONTROL</b></th>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold; width: 23%">{{vehicle?.propietario.numero_control}}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold; width: 23%">{{vehicle?.propietario.numero_control}}</td>
         </tr>
         <tr>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>VIGENCIA DEL CONTRATO</b></th>
           <td style=" border: 1px solid ;padding: 8px; font-weight: bold;">ANUAL</td>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>FECHA DE REGISTRO</b></th>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold;">{{this.datePipe.transform(vehicle?.propietario.fecha_ingreso, 'dd/MM/yyyy', 'UTC')}}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold;">{{this.datePipe.transform(vehicle?.propietario.fecha_ingreso, 'dd/MM/yyyy', 'UTC')}}</td>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>FECHA DE VENCIMIENTO</b></th>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold;">{{this.datePipe.transform(vehicle?.propietario.fecha_vencimiento, 'dd/MM/yyyy', 'UTC')}}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold;">{{this.datePipe.transform(vehicle?.propietario.fecha_vencimiento, 'dd/MM/yyyy', 'UTC')}}</td>
         </tr>
         <tr>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>CONTRATANTE</b></th>
-          <td colspan="5" style=" border: 1px solid ;padding: 8px; font-weight: bold;">{{vehicle?.propietario.nombre_contratante}}</td>
+          <td colspan="5" style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold;">{{(vehicle?.propietario.nombre_contratante).toUpperCase()}}</td>
         </tr>
         <tr>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>RIF/C.I.</b></th>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold;" >{{vehicle?.propietario.cedula_contratante}}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold;" >{{(vehicle?.propietario.cedula_contratante).toUpperCase()}}</td>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px;"><b>TELEFONO</b></th>
-          <td colspan="3" style="border: 1px solid ;padding: 8px; font-weight: bold;">{{vehicle?.propietario.telefono_contratante}}</td>
+          <td colspan="3" style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold;">{{(vehicle?.propietario.telefono_contratante).toUpperCase()}}</td>
         </tr>
         <tr>
 
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px;  width:16%"><b>DIRECCIÓN DEL CONTRATANTE</b></th>
-          <td colspan="5" style=" border: 1px solid ;padding: 8px; font-weight: bold;  width:75%">{{vehicle?.propietario.direccion_contratante}}</td>
+          <td colspan="5" style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold;  width:75%">{{(vehicle?.propietario.direccion_contratante).toUpperCase()}}</td>
         </tr>
         <tr>
           <td></td>
@@ -86,13 +86,13 @@
           <td></td>
           <td></td>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:8%"><b>VENDEDOR</b></th>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold; width:30%"><b>{{vehicle?.propietario.promotor}}</b></td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold; width:30%"><b>{{(vehicle?.propietario.promotor).toUpperCase()}}</b></td>
         </tr>
         <tr>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:8%"><b>BENEFICIARIO</b></th>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold;">{{vehicle?.propietario.nombre_beneficiario}}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold;">{{(vehicle?.propietario.nombre_beneficiario).toUpperCase()}}</td>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:8%"><b>RIF/C.I.</b></th>
-          <td colspan="3" style=" border: 1px solid ;padding: 8px; font-weight: bold;">{{vehicle?.propietario.cedula_beneficiario}}</td>
+          <td colspan="3" style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold;">{{(vehicle?.propietario.cedula_beneficiario).toUpperCase()}}</td>
         </tr>
       </table>
       <div style="height:40px"></div>
@@ -103,33 +103,33 @@
         style="width: 100%; border-collapse: collapse; border: 2px solid #333; border-bottom: none; border-right: none;">
         <tr>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:10%"><b>MARCA</b></th>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold; width: 25% ;">{{vehicle?.marca}}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold; width: 25% ;">{{(vehicle?.marca).toUpperCase()}}</td>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:8%;"><b>MODELO</b></th>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold; width: 25% ;">{{vehicle?.modelo}}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold; width: 25% ;">{{(vehicle?.modelo).toUpperCase()}}</td>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:9%;"><b>CLASE</b></th>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold; width: 25% ;"><b>{{vehicle?.clase}}</b></td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold; width: 25% ;"><b>{{(vehicle?.clase).toUpperCase()}}</b></td>
         </tr>
         <tr>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:10%"><b>SERIAL MOTOR</b></th>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold; width: 25%;">{{vehicle?.serialMotor}}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold; width: 25%;">{{(vehicle?.serialMotor).toUpperCase()}}</td>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:13%;"><b>SERIAL CARROCERÍA</b></th>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold; width: 25%;">{{vehicle?.serialCarroceria}}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold; width: 25%;">{{(vehicle?.serialCarroceria).toUpperCase()}}</td>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:9%;"><b>N° DE PLACA</b></th>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold; width: 25%;">{{vehicle?.placa}}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold; width: 25%;">{{(vehicle?.placa).toUpperCase()}}</td>
         </tr>
         <tr>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:10%"><b>USO</b></th>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold; width: 25%">{{vehicle?.uso}}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold; width: 25%">{{(vehicle?.uso).toUpperCase()}}</td>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:8%;"><b>TIPO</b></th>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold; width: 25% ">{{vehicle?.tipo}}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold; width: 25% ">{{(vehicle?.tipo).toUpperCase()}}</td>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:9%;"><b>COLOR</b></th>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold; width: 25% ">{{vehicle?.color}}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold; width: 25% ">{{(vehicle?.color).toUpperCase()}}</td>
         </tr>
         <tr>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:10%">AÑO</th>
           <td style=" border: 1px solid ;padding: 8px; font-weight: bold; ">{{this.datePipe.transform(vehicle?.propietario.fecha_ingreso, 'yyyy', 'UTC')}} / {{this.datePipe.transform(vehicle?.propietario.fecha_vencimiento, 'yyyy', 'UTC')}}</td>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width:8%"><b>PUESTOS</b></th>
-          <td style="width: 20px !important; border: 1px solid ;padding: 8px; font-weight: bold;">{{vehicle?.puestos}}</td>
+          <td style="font-size: 1em; width: 20px !important; border: 1px solid ;padding: 8px; font-weight: bold;">{{vehicle?.puestos}}</td>
         </tr>
       </table>
 
@@ -150,14 +150,14 @@
         <tr>
           <th style=" border: 1px solid ;padding: 8px; font-weight: bold;; background-color: #eee; width: 12%;;" rowspan="2"><b>GARANTIAS </b></th>
           <td style=" border: 1px solid ;padding: 8px; font-weight: bold;">DAÑOS A COSAS</td>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold;">{{vehicle?.danos_cosas}}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold;">{{vehicle?.danos_cosas}}</td>
           <td style=" border: 1px solid ;padding: 8px; font-weight: bold;" rowspan="2"></td>
           <td style=" border: 1px solid ;padding: 8px; font-weight: bold;" rowspan="2"></td>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold;" rowspan="7" align="right" >{{(vehicle?.precio_unitario +  vehicle?.precio_unitario * 0.16).toFixed(2).replace('.', ',') }}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold;" rowspan="7" align="right" >{{(vehicle?.precio_unitario +  vehicle?.precio_unitario * 0.16).toFixed(2).replace('.', ',')}}</td>
         </tr>
         <tr>
           <td style=" border: 1px solid ;padding: 8px; font-weight: bold;">DAÑOS A PERSONAS</td>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold;">{{vehicle?.danos_cosas}}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold;">{{vehicle?.danos_cosas}}</td>
         </tr>
         <tr>
           <th style="border: 1px solid #666; background-color: #eee; padding: 8px; width: 12%;;"><b>ASESORIAS LEGALES</b></th>
@@ -176,7 +176,7 @@
         <tr>
           <th style=" border: 1px solid ;padding: 8px; font-weight: bold;; background-color: #eee ; width: 12%;;" rowspan="3"><b>OCUPANTE</b></th>
           <td style=" border: 1px solid ;padding: 8px; font-weight: bold;">MUERTE</td>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold;">{{vehicle?.danos_cosas}}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold;">{{vehicle?.danos_cosas}}</td>
           <td style=" border: 1px solid ;padding: 8px; font-weight: bold;" rowspan="3"></td>
           <td style=" border: 1px solid ;padding: 8px; font-weight: bold;" rowspan="3"></td>
         </tr>
@@ -191,10 +191,10 @@
         <tr>
           <td style="border-left: none; border-bottom: none; border-right: none;"></td>
           <td style="border-left: none; border-bottom: none; border-right: none;"></td>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold;">{{vehicle?.danos_cosas * 3 }}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold;">{{vehicle?.danos_cosas * 3}}</td>
           <td style="border-left: none; border-bottom: none; border-right: none;"></td>
           <td style=" border: 1px solid ;padding: 8px; font-weight: bold;"><b>SUB-TOTAL</b></td>
-          <td style=" border: 1px solid ;padding: 8px; font-weight: bold;" align="right">{{(vehicle?.precio_unitario +  vehicle?.precio_unitario * 0.16).toFixed(2).replace('.', ',') }}</td>
+          <td style="font-size: 1em; border: 1px solid ;padding: 8px; font-weight: bold;" align="right">{{(vehicle?.precio_unitario +  vehicle?.precio_unitario * 0.16).toFixed(2).replace('.', ',')}}</td>
         </tr>
       </table>
 
@@ -250,7 +250,7 @@
           </td>
           <td align="right" style="width: 20%;">
             <b>
-            {{(vehicle?.precio_unitario +  vehicle?.precio_unitario * 0.16).toFixed(2).replace('.', ',') }}
+            {{(vehicle?.precio_unitario +  vehicle?.precio_unitario * 0.16).toFixed(2).replace('.', ',')}}
             </b>
           </td>
         </tr>
@@ -259,12 +259,12 @@
 
       <div style="display: flex; justify-content: space-around; margin-top: 100px; margin-bottom: 10px;">
         <div>
-          <h5>____________________________________________</h5>
+          <h5>________________</h5>
           <p style="margin-left: 95px; font-size: 22px;"><b>CONTRATANTE</b></p>
         </div>
 
         <div>
-          <h5>____________________________________________</h5>
+          <h5>________________</h5>
           <p style="margin-left: 100px; font-size: 22px;"><b>WORCASS C.A.</b></p>
         </div>
       </div>
@@ -277,4 +277,3 @@
     </div>
   </div>
 </div>
-

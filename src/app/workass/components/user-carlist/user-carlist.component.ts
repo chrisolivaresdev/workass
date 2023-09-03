@@ -201,44 +201,44 @@ export class UsercarListComponent implements OnInit {
     doc.setFontSize(8);
 
     doc.text(`CONTRATO`, 20, 100);
-    doc.setFontSize(6);
+    doc.setFontSize(7);
 
     doc.text(`${data.contrato.toUpperCase()}`, 20, 105);
 
     doc.setFontSize(8);
     doc.text(`CLASE`, 40, 100);
-    doc.setFontSize(6);
+    doc.setFontSize(7);
     doc.text(`${data.clase.toUpperCase()}`, 40, 105);
 
     doc.setFontSize(8);
     doc.text(`MARCA`, 60, 100);
-    doc.setFontSize(6);
+    doc.setFontSize(7);
     doc.text(`${data.marca.toUpperCase()}`, 60, 105);
 
     doc.setFontSize(8);
     doc.text(`MODELO`, 80, 100);
-    doc.setFontSize(6);
+    doc.setFontSize(7);
     doc.text(`${data.modelo.toUpperCase()}`, 80, 105);
 
     doc.setFontSize(8);
     doc.text(`COLOR`, 100, 100);
-    doc.setFontSize(6);
+    doc.setFontSize(7);
     doc.text(`${data.color.toUpperCase()}`, 100, 105);
 
     doc.setFontSize(8);
     doc.text(`PLACA`, 120, 100);
-    doc.setFontSize(6);
+    doc.setFontSize(7);
     doc.text(`${data.placa.toUpperCase()}`, 120, 105);
 
     doc.setFontSize(8);
     doc.text(`PRECIO`, 140, 95);
     doc.text(`UNITARIO`, 140, 100);
-    doc.setFontSize(6);
+    doc.setFontSize(7);
     doc.text(`${data.precio_unitario}`, 140, 105);
-    doc.setFontSize(6);
+    doc.setFontSize(7);
     doc.setFont('arial','normal')
     doc.text(`BASE IMPONIBLE`, 160, 100);
-    doc.text(`${data.precio_unitario}`, 180, 100);
+    doc.text(`${data.precio_unitario}`, 183, 100);
 
 
     doc.setFontSize(10);
@@ -305,7 +305,7 @@ export class UsercarListComponent implements OnInit {
 
     doc.text(`Se agradece a las autoridades brondar apoyo`, 130, 225);
     doc.text(`al portador de este carnet`, 143, 230);
-    doc.setFontSize(6);
+    doc.setFontSize(7);
     doc.setFont('arial','bold')
     doc.text(`OFICINA: AVENIDA INTERCOMUNAL. SECTOR 4:10 EDIFICIO MARBA PB`, 120, 235);
     doc.text(`LOCAL, 1-A PARROQUIA LA ROSA, CABIMAS, ESTADO ZULIA`, 125, 240);
