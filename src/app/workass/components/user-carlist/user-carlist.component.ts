@@ -303,12 +303,12 @@ export class UsercarListComponent implements OnInit {
 
     doc.setFontSize(8);
 
-    doc.text(`Se agradece a las autoridades brondar apoyo`, 130, 225);
-    doc.text(`al portador de este carnet`, 143, 230);
-    doc.setFontSize(7);
+    doc.text(`Se agradece a las autoridades brondar apoyo`, 145, 222);
+    doc.text(`al portador de este carnet`, 143, 227);
     doc.setFont('arial','bold')
+    doc.setFontSize(6);
     doc.text(`OFICINA: AVENIDA INTERCOMUNAL. SECTOR 4:10 EDIFICIO MARBA PB`, 120, 235);
-    doc.text(`LOCAL, 1-A PARROQUIA LA ROSA, CABIMAS, ESTADO ZULIA`, 125, 240);
+    doc.text(`LOCAL, 1-A PARROQUIA LA ROSA, CABIMAS, ESTADO ZULIA`, 123, 235);
 
      doc.save(`factura-${data.propietario.nombre_contratante}.pdf`);
   }

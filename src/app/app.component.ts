@@ -11,12 +11,11 @@ import { IpcRenderer } from 'electron';
 export class AppComponent {
   title = 'workass';
 
-  // @HostListener('window:beforeunload', ['$event'])
-  // beforeUnloadHandler(event: any) {
-  //   // Realizar la acción antes de cerrar la ventana
-  //   localStorage.removeItem('token');
-  //   localStorage.removeItem('role')
-  //   localStorage.removeItem('nombre')
-  // }
-
+  @HostListener('window:beforeunload', ['$event'])
+  beforeUnloadHandler(event: any) {
+    // Realizar la acción antes de cerrar la ventana
+    localStorage.removeItem('token');
+    localStorage.removeItem('role')
+    localStorage.removeItem('nombre')
+  }
 }
